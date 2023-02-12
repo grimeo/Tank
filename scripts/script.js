@@ -1,5 +1,5 @@
 import Tank from "../scripts/tank.js"
-import Zombie from "./enemy.js"
+import Enemy from "./enemy.js"
 import Bullet from "../scripts/bullet.js"
 import InputHandler from "../scripts/inputHandler.js"
 
@@ -11,13 +11,16 @@ const ctx = canvas.getContext('2d')
 
 ctx.canvas.width = 700
 ctx.canvas.height = 700
-
 ctx.font = '30px Impact'
+
+const fps = 120;
 
 let input = new InputHandler();
 let tank = new Tank(700, 700)
 
 let bullets = []
+let enemies = []
+
 
 
 
@@ -31,6 +34,7 @@ function animate(){
             bullets.push(new Bullet(tank.x + tank.width /2 , tank.y));
             tank.shootIntervalCounter = 0;
         }
+        enemies.push(new Enemy());
     }
     
     if(bullets.length == tank.maxBullet) {
@@ -44,14 +48,18 @@ function animate(){
         }
     }
     
-    console.log(tank.reloadCounter, tank.shootIntervalCounter, tank.maxBullet - bullets.length)
+    console.log(tank.reloadCounter, tank.shootIntervalCounter, tank.maxBullet - bullets.length);
 
-    ctx.fillStyle = 'black';
-    ctx.fillText('Bullet: ' + (tank.maxBullet - bullets.length), 50, 75);
+    
     // ctx.fillStyle = 'white';
     // ctx.fillText('Bullet: ' + bullets.length, 55, 80);
-    [...bullets].forEach(object => object.update());
-    [...bullets].forEach(object => object.draw(ctx));
-    requestAnimationFrame(animate)
+    [...bullets, ...enemies].forEach(object => object.update());
+    [...bullets, ...enemies].forEach(object => object.draw(ctx));
+    ctx.fillStyle = 'black';
+    ctx.fillText('Bullet: ' + (tank.maxBullet - bullets.length), 50, 75);
+
+    setTimeout(()=>{
+        requestAnimationFrame(animate);
+    }, 1000 /fps);
 }
 animate();
