@@ -55,7 +55,7 @@ function animate(){
     ctx.clearRect(0, 0, 700, 700); 
 
     ctx.fillStyle = 'red'
-    ctx.fillRect(0, 550, 700, 10); // finish line
+    ctx.fillRect(0, 550, 700, 5); // finish line
 
     [...bullets, ...enemies].forEach(object => object.update());
     [...bullets, ...enemies].forEach(object => object.draw(ctx));
@@ -84,7 +84,6 @@ function animate(){
     if(spawnCounter > spawnTime){
         enemies.push(new Enemy());
         spawnCounter = 0;
-        console.log(enemies[0].y)
     } else {
         spawnCounter += 1000/fps;
     }

@@ -7,7 +7,6 @@ export default class InputHandler {
                     e.key === 'ArrowRight') 
                     && this.keys.indexOf(e.key) === -1){
                 this.keys.push(e.key);
-                console.log(e.keyCode)
             }
         });
         window.addEventListener('keyup', e => {

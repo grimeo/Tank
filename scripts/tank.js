@@ -45,6 +45,6 @@ export default class Tank{
     draw(ctx){
         // ctx.fillStyle = this.color;
         // ctx.strokeRect(this.x, this.y, this.width, this.height);
-        ctx.drawImage(this.image, 0, 0, this.spriteWidth * this.frame, this.spriteHeight, this.x, this.y, this.width, this.height);
+        ctx.drawImage(this.image, 0, 0, this.spriteWidth, this.spriteHeight, this.x, this.y, this.width, this.height);
     }
 }
