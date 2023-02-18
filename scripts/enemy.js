@@ -1,7 +1,7 @@
 export default class Enemy{
     constructor(x){
-        this.spriteWidth = 313;
-        this.spriteHeight = 290;
+        this.spriteWidth = 311;
+        this.spriteHeight = 288;
         this.radius = 30;
         this.width = 60;
         this.height = 60;
@@ -18,8 +18,8 @@ export default class Enemy{
         this.didFinish = false;
         this.image = document.getElementById('enemy-img');
         this.frame = 0;
-        this.maxFrame = 8;
-        this.timeToNextFrame = 10;
+        this.maxFrame = 16;
+        this.timeToNextFrame = 5;
         this.timeToNextFrameCounter = 0;
     }
 
@@ -43,11 +43,11 @@ export default class Enemy{
     }
 
     draw(ctx){
-        ctx.beginPath();
-        ctx.fillStyle = this.color;
-        ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
-        ctx.stroke();
-        ctx.closePath(); 
-        ctx.drawImage(this.image, this.spriteWidth * this.frame, 0, this.spriteWidth, this.spriteHeight, this.x - this.radius, this.y-this.radius, this.width, this.height);
+        // ctx.beginPath();
+        // ctx.fillStyle = this.color;
+        // ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
+        // ctx.stroke();
+        // ctx.closePath(); 
+        ctx.drawImage(this.image, this.spriteWidth * this.frame, 0, this.spriteWidth , this.spriteHeight, this.x - this.radius, this.y-this.radius, this.width, this.height);
     }
 }
