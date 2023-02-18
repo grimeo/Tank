@@ -30,14 +30,14 @@ export default class Enemy{
         // if(this.x - this.radius < 30 || this.x + this.radius > 670) this.directionX = this.directionX * -1;
 
         if(this.frame > this.maxFrame)this.frame=0;
-        
-        // else this.frame++;  
-        if(this.timeToNextFrameCounter < this.timeToNextFrame){
-            this.timeToNextFrameCounter++;
-        } else if(this.timeToNextFrameCounter == this.timeToNextFramee){
-            this.frame++;
-            this.timeToNextFrame = 0;
-        }
+
+        else this.frame++;  
+        // if(this.timeToNextFrameCounter < this.timeToNextFrame){
+        //     this.timeToNextFrameCounter++;
+        // } else if(this.timeToNextFrameCounter == this.timeToNextFramee){
+        //     this.frame++;
+        //     this.timeToNextFrame = 0;
+        // }
     }
 
     draw(ctx){
