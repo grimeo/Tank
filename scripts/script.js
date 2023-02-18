@@ -1,6 +1,7 @@
 import Tank from "../scripts/tank.js"
 import Enemy from "./enemy.js"
 import Bullet from "../scripts/bullet.js"
+import Explosion from "./explosion.js"
 import InputHandler from "../scripts/inputHandler.js"
 
 //https://www.youtube.com/watch?v=7JtLHJbm0kA
@@ -28,6 +29,7 @@ let score = 0;
 
 let bullets = []
 let enemies = []
+let explosions = []
 
 
 function isCollide(c1, c2){
@@ -57,8 +59,8 @@ function animate(){
     ctx.fillStyle = 'red'
     ctx.fillRect(0, 550, 700, 5); // finish line
 
-    [...bullets, ...enemies].forEach(object => object.update());
-    [...bullets, ...enemies].forEach(object => object.draw(ctx));
+    [...bullets, ...enemies, ...explosions].forEach(object => object.update());
+    [...bullets, ...enemies, ...explosions].forEach(object => object.draw(ctx));
     
     tank.draw(ctx);
     tank.update(input);
@@ -94,11 +96,15 @@ function animate(){
             object.didFinish = true;
             updatedTankLife = tank.life
         }
+        if(object.y >= 570){
+            object.deleteMark = true;
+        }
     });
         
     [...bullets].forEach(object =>{
         for(let i = 0; i < enemies.length; i++ ){
             if(isCollide(object, enemies[i])){
+                explosions.push(new Explosion(enemies[i].x, enemies[i].y, enemies[i].width))
                 enemies[i].deleteMark = true;
                 object.deleteMark = true;
                 score += 1;
@@ -110,10 +116,11 @@ function animate(){
     // ctx.fillStyle = 'white';
     // ctx.fillText('Bullet: ' + bullets.length, 55, 80);
     bullets = bullets.filter(object => !object.deleteMark)
+    explosions = explosions.filter(object => !object.deleteMark)
     enemies = enemies.filter(object => !object.deleteMark)
 
-
     drawStats();
+
 
     setTimeout(()=>{
         requestAnimationFrame(animate);

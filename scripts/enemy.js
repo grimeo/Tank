@@ -48,6 +48,6 @@ export default class Enemy{
         // ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
         // ctx.stroke();
         // ctx.closePath(); 
-        ctx.drawImage(this.image, this.spriteWidth * this.frame, 0, this.spriteWidth , this.spriteHeight, this.x - this.radius, this.y-this.radius, this.width, this.height);
+        ctx.drawImage(this.image, this.spriteWidth * this.frame, 0, this.spriteWidth * 0.9, this.spriteHeight *0.9, this.x - this.radius -3, this.y-this.radius-3, this.width, this.height);
     }
 }
