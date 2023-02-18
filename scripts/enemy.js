@@ -12,6 +12,8 @@ export default class Enemy{
         this.directionX =  this.xWalkLevel1 ;
         this.deleteMark = false;
         this.didFinish = false;
+        this.spriteWidth = 446;
+        this.spriteHeight = 312;
     }
 
     update(){
@@ -26,6 +28,6 @@ export default class Enemy{
         ctx.fillStyle = this.color;
         ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
         ctx.fill();
-        ctx.closePath();    
+        ctx.closePath();   
     }
 }

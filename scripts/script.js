@@ -64,7 +64,7 @@ function animate(){
     tank.update(input);
     if(input.keys.indexOf(' ') > -1 ){
         if(tank.shootIntervalCounter == tank.shootTime && tank.usedBullet < tank.maxBullet){
-            bullets.push(new Bullet(tank.x + tank.width /2 , tank.y));
+            bullets.push(new Bullet(tank.x + tank.width /2 , tank.y + 20));
             tank.usedBullet += 1;
             tank.shootIntervalCounter = 0;
         }

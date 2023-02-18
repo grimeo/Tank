@@ -3,10 +3,12 @@ export default class Tank{
     constructor(gamewidth, gameheight){
         this.gamewidth = gamewidth;
         this.gameheight = gameheight;
-        this.width = 100;
-        this.height = 70;
+        this.spriteWidth = 446;
+        this.spriteHeight = 312;
+        this.width = 190;
+        this.height = 133;
         this.x = 700/2 - this.width/2;
-        this.y = this.gameheight - (this.height + 30);
+        this.y = this.gameheight - (this.height );
         this.maxBullet = 4;
         this.usedBullet = 0;
         // this.image = document.getElementById('tank-img');
@@ -19,6 +21,8 @@ export default class Tank{
         this.reloadCounter = 0;
         this.reloadTime = 110;
         this.life = 10;
+        this.image = document.getElementById('tank-img');
+        this.frame = 1;
 
         
     }
@@ -32,15 +36,15 @@ export default class Tank{
         } else {
             this.speedX = 0;
         }
-        if(this.x < 0) this.x = 0;
-        else if(this.x > 700 - this.width) this.x = 700 - this.width;
+        if(this.x < -40) this.x = -40;
+        else if(this.x > 740 - this.width) this.x = 740 - this.width;
         
         if(this.shootIntervalCounter < this.shootTime) this.shootIntervalCounter++;
 
     }
     draw(ctx){
-        ctx.fillStyle = this.color;
-        ctx.fillRect(this.x, this.y, this.width, this.height);
-        // ctx.drawImage(this.image, this.frameX * this.width , this.frameY * this.height, this.width, this.height, this.x, this.y, this.width, this.height);
+        // ctx.fillStyle = this.color;
+        // ctx.strokeRect(this.x, this.y, this.width, this.height);
+        ctx.drawImage(this.image, 0, 0, this.spriteWidth * this.frame, this.spriteHeight, this.x, this.y, this.width, this.height);
     }
 }
