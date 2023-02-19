@@ -12,6 +12,9 @@ export default class Explosion {
         this.timeToNextFrame = 6;
         this.timeToNextFrameCounter = 0;
         this.deleteMark = false;
+        this.sound = new Audio();
+        this.sound.src = './sfx/shotsfx.ogg';
+        this.sound.play();
 
     }
     update(){

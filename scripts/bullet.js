@@ -11,9 +11,6 @@ export default class Bullet{
         this.directionY = -10;
         this.deleteMark = false;
         this.color ='black';
-        this.sound = new Audio();
-        this.sound.src = './sfx/shotsfx.ogg';
-        this.sound.play();
         // this.sound = document.getElementById('shot-sfx');
         this.didFire = false;
         this.image = document.getElementById('bullet-img');
