@@ -13,7 +13,7 @@ export default class Explosion {
         this.timeToNextFrameCounter = 0;
         this.deleteMark = false;
         this.sound = new Audio();
-        this.sound.src = './sfx/shotsfx.ogg';
+        this.sound.src = './sfx/explodesfx.ogg';
         this.sound.play();
 
     }

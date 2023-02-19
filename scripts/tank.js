@@ -8,7 +8,7 @@ export default class Tank{
         this.width = 190;
         this.height = 133;
         this.x = 900/2 - this.width/2;
-        this.y = this.gameheight - (this.height );
+        this.y = this.gameheight - (this.height + 10);
         this.maxBullet = 4;
         this.usedBullet = 0;
         // this.image = document.getElementById('tank-img');
@@ -20,7 +20,7 @@ export default class Tank{
         this.shootTime = 15;
         this.reloadCounter = 0;
         this.reloadTime = 110;
-        this.life = 10;
+        this.life = 4;
         this.image = document.getElementById('tank-img');
         this.frame = 1;
 

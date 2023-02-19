@@ -26,6 +26,8 @@ let updatedTankLife = tank.life
 
 let score = 0;
 
+let bulletIcon = document.getElementById('bullet-icon');
+let lifeIcon = document.getElementById('life-icon');
 
 let bullets = []
 let enemies = []
@@ -42,22 +44,41 @@ function isCollide(c1, c2){
     } 
 }
 
+
+
 function drawStats(){
-    ctx.fillStyle = 'lightgray';
-    ctx.fillText('B: ' + (tank.maxBullet - tank.usedBullet), 5, 35);
+    if(tank.maxBullet == tank.usedBullet){
+
+        for(let i = 0; i < tank.maxBullet; i++){
+
+            // ctx.drawImage(bulletIcon, 0, 0, 50, 50, 845 + 35 * -i, 60 , 50 , 50);
+        }
+    } else {
+        for(let i = 0; i < tank.maxBullet - tank.usedBullet; i++){
+            ctx.drawImage(bulletIcon, 0, 0, 50, 50, 845 + 30.1 * -i, 60 , 50 , 50);
+        }
+    }
+    
+
+    for(let i = 0; i < tank.life; i++){
+        ctx.drawImage(lifeIcon, 0, 0, 50, 50, 850 + 30 * -i, 15 , 50 * 0.7 , 50 *0.7  );
+    }
+
+    ctx.fillStyle = 'black';
+    ctx.fillText('Score: ' + score , 15, 40);
 
     ctx.fillStyle = 'lightgray';
-    ctx.fillText('Score: ' + score , 750, 35);
+    ctx.fillText('Score: ' + score , 10, 35);
 
-    ctx.fillStyle = 'lightgray';
-    ctx.fillText('L: ' + (updatedTankLife ), 5, 695);
+    // ctx.fillStyle = 'lightgray';
+    // ctx.fillText('L: ' + (updatedTankLife ), 5, 695);
 }
 
 function animate(){
     ctx.clearRect(0, 0, 900, 700); 
 
-    ctx.fillStyle = 'red'
-    ctx.fillRect(0, 550, 900, 5); // finish line
+    // ctx.fillStyle = 'red';
+    // ctx.fillRect(0, 535, 900, 5); // finish line
 
     [...bullets, ...enemies, ...explosions].forEach(object => object.update());
     [...bullets, ...enemies, ...explosions].forEach(object => object.draw(ctx));
@@ -91,12 +112,10 @@ function animate(){
     }
 
     [...enemies].forEach(object => {
-        if(object.y >= 545 && object.didFinish == false){
+        if(object.y >= 530 && object.didFinish == false){
             tank.life = tank.life -1;
             object.didFinish = true;
             updatedTankLife = tank.life
-        }
-        if(object.y >= 545){
             object.deleteMark = true;
         }
     });
@@ -121,9 +140,12 @@ function animate(){
 
     drawStats();
 
+    if(tank.life == 0){
 
-    setTimeout(()=>{
-        requestAnimationFrame(animate);
-    }, 1000 /fps);
+    } else {
+        setTimeout(()=>{
+            requestAnimationFrame(animate);
+        }, 1000 /fps);
+    }
 }
 animate();

@@ -11,9 +11,9 @@ export default class Enemy{
         this.yWalkLevel1 = 1; // default 0.25 max is 2
         this.yWalkLevel2 = Math.floor(Math.random() * 0.75);
         this.xWalkLevel1 = 0;
-        this.xWalkLevel2 = Math.random() * 6 - 3;
+        this.xWalkLevel2 = Math.random() * 3 - 1.5;
         this.directionY =  this.yWalkLevel1;
-        this.directionX =  this.xWalkLevel1 ;
+        this.directionX =  this.xWalkLevel2 ;
         this.deleteMark = false;
         this.didFinish = false;
         this.image = document.getElementById('enemy-img');
@@ -27,7 +27,7 @@ export default class Enemy{
         this.y += this.directionY;
         this.x += this.directionX;
         //bounce
-        // if(this.x - this.radius < 30 || this.x + this.radius > 670) this.directionX = this.directionX * -1;
+        if(this.x - this.radius < 55 || this.x + this.radius > 845) this.directionX = this.directionX * -1;
 
 
         // else this.frame++;  

@@ -14,6 +14,9 @@ export default class Bullet{
         // this.sound = document.getElementById('shot-sfx');
         this.didFire = false;
         this.image = document.getElementById('bullet-img');
+        this.sound = new Audio();
+        this.sound.src = './sfx/shotsfx.mp3';
+        this.sound.play();
     }
     update(){
         // if(this.didFire == false) {
@@ -26,11 +29,11 @@ export default class Bullet{
 
     draw(ctx){
         // if(this.frame === 0) this.sound.play();
-        ctx.beginPath();
-        ctx.fillStyle = this.color;
-        ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
-        ctx.fill();
-        ctx.closePath();    
-        ctx.drawImage(this.image, 0, 0, this.spriteWidth, this.spriteHeight , this.x - this.width/2, this.y-this.height /2, this.width, this.height);
+        // ctx.beginPath();
+        // ctx.fillStyle = this.color;
+        // ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
+        // ctx.fill();
+        // ctx.closePath();    
+        ctx.drawImage(this.image, 0, 0, this.spriteWidth, this.spriteHeight , this.x - this.width/2 - 10, this.y-this.height /2, this.width *2, this.height*2);
     }
 }
