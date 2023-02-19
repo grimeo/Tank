@@ -2,13 +2,13 @@ export default class Enemy{
     constructor(x){
         this.spriteWidth = 311;
         this.spriteHeight = 288;
-        this.radius = 30;
-        this.width = 60;
-        this.height = 60;
-        this.x = Math.random() * (670-this.radius) + this.radius;
+        this.radius = 25;
+        this.width = 50;
+        this.height = 50;
+        this.x = Math.random() * (810-this.radius -70) + this.radius +60;
         this.y = 0;
         this.color = 'red';
-        this.yWalkLevel1 = 2; // default 0.25 max is 2
+        this.yWalkLevel1 = 1; // default 0.25 max is 2
         this.yWalkLevel2 = Math.floor(Math.random() * 0.75);
         this.xWalkLevel1 = 0;
         this.xWalkLevel2 = Math.random() * 6 - 3;
@@ -48,6 +48,6 @@ export default class Enemy{
         // ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
         // ctx.stroke();
         // ctx.closePath(); 
-        ctx.drawImage(this.image, this.spriteWidth * this.frame, 0, this.spriteWidth * 0.9, this.spriteHeight *0.9, this.x - this.radius -3, this.y-this.radius-3, this.width, this.height);
+        ctx.drawImage(this.image, this.spriteWidth * this.frame, 0, this.spriteWidth , this.spriteHeight , this.x - this.radius , this.y-this.radius, this.width, this.height);
     }
 }

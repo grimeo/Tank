@@ -11,14 +11,14 @@ const canvas = document.getElementById('gamecanvas')
 const ctx = canvas.getContext('2d')
 canvas.focus()
 
-ctx.canvas.width = 700
+ctx.canvas.width = 900
 ctx.canvas.height = 700
 ctx.font = '30px Impact'
 
 const fps = 120;
 
 let input = new InputHandler();
-let tank = new Tank(700, 700);
+let tank = new Tank(900, 700);
 
 let spawnTime = 1000; // 2k default
 let spawnCounter = 0
@@ -43,21 +43,21 @@ function isCollide(c1, c2){
 }
 
 function drawStats(){
-    ctx.fillStyle = 'black';
+    ctx.fillStyle = 'lightgray';
     ctx.fillText('B: ' + (tank.maxBullet - tank.usedBullet), 5, 35);
 
-    ctx.fillStyle = 'black';
-    ctx.fillText('Score: ' + score , 580, 35);
+    ctx.fillStyle = 'lightgray';
+    ctx.fillText('Score: ' + score , 750, 35);
 
-    ctx.fillStyle = 'black';
+    ctx.fillStyle = 'lightgray';
     ctx.fillText('L: ' + (updatedTankLife ), 5, 695);
 }
 
 function animate(){
-    ctx.clearRect(0, 0, 700, 700); 
+    ctx.clearRect(0, 0, 900, 700); 
 
     ctx.fillStyle = 'red'
-    ctx.fillRect(0, 550, 700, 5); // finish line
+    ctx.fillRect(0, 550, 900, 5); // finish line
 
     [...bullets, ...enemies, ...explosions].forEach(object => object.update());
     [...bullets, ...enemies, ...explosions].forEach(object => object.draw(ctx));
@@ -82,7 +82,7 @@ function animate(){
             tank.color = 'green'
         }
     }
-    
+    // enemies.push(new Enemy());
     if(spawnCounter > spawnTime){
         enemies.push(new Enemy());
         spawnCounter = 0;
@@ -91,12 +91,12 @@ function animate(){
     }
 
     [...enemies].forEach(object => {
-        if(object.y >= 530 && object.didFinish == false){
+        if(object.y >= 545 && object.didFinish == false){
             tank.life = tank.life -1;
             object.didFinish = true;
             updatedTankLife = tank.life
         }
-        if(object.y >= 570){
+        if(object.y >= 545){
             object.deleteMark = true;
         }
     });

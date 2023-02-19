@@ -7,7 +7,7 @@ export default class Tank{
         this.spriteHeight = 312;
         this.width = 190;
         this.height = 133;
-        this.x = 700/2 - this.width/2;
+        this.x = 900/2 - this.width/2;
         this.y = this.gameheight - (this.height );
         this.maxBullet = 4;
         this.usedBullet = 0;
@@ -37,7 +37,7 @@ export default class Tank{
             this.speedX = 0;
         }
         if(this.x < -40) this.x = -40;
-        else if(this.x > 740 - this.width) this.x = 740 - this.width;
+        else if(this.x > 940 - this.width) this.x = 940 - this.width;
         
         if(this.shootIntervalCounter < this.shootTime) this.shootIntervalCounter++;
 
