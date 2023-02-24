@@ -47,4 +47,19 @@ export default class Tank{
         // ctx.strokeRect(this.x, this.y, this.width, this.height);
         ctx.drawImage(this.image, 0, 0, this.spriteWidth, this.spriteHeight, this.x, this.y, this.width, this.height);
     }
+    
+    init(){
+        this.x = 900/2 - this.width/2;
+        this.y = this.gameheight - (this.height + 10);
+        this.maxBullet = 4;
+        this.usedBullet = 0;
+        this.speedX = 1
+        this.shootIntervalCounter = 0;
+        this.shootTime = 15;
+        this.reloadCounter = 0;
+        this.reloadTime = 110;
+        this.life = 4;
+        this.frame = 1;
+    }
+    
 }
