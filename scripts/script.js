@@ -15,6 +15,11 @@ ctx.canvas.width = 900
 ctx.canvas.height = 700
 ctx.font = '30px Impact'
 
+let bulletIcon = document.getElementById('bullet-icon');
+let lifeIcon = document.getElementById('life-icon');
+
+const screen = document.getElementsByClassName('screen');
+
 const fps = 120;
 
 let input = new InputHandler();
@@ -26,8 +31,7 @@ let updatedTankLife = tank.life
 
 let score = 0;
 
-let bulletIcon = document.getElementById('bullet-icon');
-let lifeIcon = document.getElementById('life-icon');
+let isPause = false;
 
 let bullets = []
 let enemies = []
@@ -44,7 +48,18 @@ function isCollide(c1, c2){
     } 
 }
 
+// screen support buttons
+// 0 = mainmenu ;
+// 1 = gameover ; 
+// 2 = gamescreen;
 
+
+function switchSuppportButtonScreen(screenToDisplay){
+    for(let i = 0; i < 3; i++){
+        if(i == screenToDisplay) screen[i].style.display = "block";
+        else screen[i].style.display = "none";
+    }
+}
 
 function drawStats(){
     if(tank.maxBullet == tank.usedBullet){
@@ -140,7 +155,10 @@ function animate(){
 
     drawStats();
 
-    if(tank.life == 0){
+    if(isPause == true){
+
+    }
+    else if(tank.life == 0){
 
     } else {
         setTimeout(()=>{
@@ -149,3 +167,15 @@ function animate(){
     }
 }
 animate();
+
+switchSuppportButtonScreen(1);
+
+
+document.getElementById('pause').addEventListener('click', () =>{
+    if(isPause == false) isPause = true;
+    else {
+        isPause = false;
+        animate();
+    }
+    canvas.focus();
+})
