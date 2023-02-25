@@ -200,14 +200,16 @@ function animate(){
         }
         for(let i = 0; i < survivors.length; i++){
             if(isCollide(object, survivors[i])){
+                let survivorXpoint = survivors[i].x;
+                let survivorYpoint = survivors[i].y;
                 survivors[i].deleteMark = true;
                 survivors = survivors.filter(object => !object.deleteMark);
 
                 enemies.push(new Enemy());
                 survivorScore += -1;
-                enemies[enemies.length -1].x = object.x;
-                enemies[enemies.length -1].y = object.y;
-                enemies[enemies.length -1].dead.play();
+                enemies[enemies.length -1].x = survivorXpoint;
+                enemies[enemies.length -1].y = survivorYpoint;
+                object.finishSound.play();
             }
         }
     });
