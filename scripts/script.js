@@ -40,6 +40,7 @@ let survivorSpawnTimeCounter = 0;
 let updatedTankLife = tank.life
 
 let score = 0;
+let survivorScore = 0;
 
 let isPause = false;
 let backToMenu = false;
@@ -88,6 +89,7 @@ function resetStats(){
     survivors = [];
     tank.init();
     score = 0;
+    survivorScore = 0;
 }
 
 function drawStats(){
@@ -109,10 +111,16 @@ function drawStats(){
     }
 
     ctx.fillStyle = 'black';
-    ctx.fillText('Score: ' + score , 15, 40);
+    ctx.fillText('Score: ' + score , 15, 90);
 
     ctx.fillStyle = 'lightgray';
-    ctx.fillText('Score: ' + score , 10, 35);
+    ctx.fillText('Score: ' + score , 10, 85);
+
+    ctx.fillStyle = 'black';
+    ctx.fillText('Survivors: ' + survivorScore , 15, 40);
+
+    ctx.fillStyle = 'lightgray';
+    ctx.fillText('Survivors: ' + survivorScore , 10, 35);
 
     // ctx.fillStyle = 'lightgray';
     // ctx.fillText('L: ' + (updatedTankLife ), 5, 695);
@@ -185,7 +193,15 @@ function animate(){
             object.finishSound.play();
         }
     });
-        
+
+    [...survivors].forEach(object => {
+        if(object.y > 530){
+            survivorScore += 1;
+            object.deleteMark = true;
+            object.finishSound.play();
+        }
+    });
+
     [...bullets].forEach(object =>{
         for(let i = 0; i < enemies.length; i++ ){
             if(isCollide(object, enemies[i])){
@@ -197,7 +213,7 @@ function animate(){
             }
             
         }
-    })
+    });
     
     // ctx.fillStyle = 'white';
     // ctx.fillText('Bullet: ' + bullets.length, 55, 80);
@@ -205,6 +221,7 @@ function animate(){
     explosions = explosions.filter(object => !object.deleteMark);
     enemies = enemies.filter(object => !object.deleteMark);
     blood = blood.filter(object => !object.deleteMark);
+    survivors = survivors.filter(object => !object.deleteMark)
 
     
     drawStats();

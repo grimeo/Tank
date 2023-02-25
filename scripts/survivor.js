@@ -8,13 +8,15 @@ export default class Survivor{
         this.x = spawnAreaX;
         this.y = 0;
         this.color = 'red';
-        this.directionY =  0.75; // 1.25
+        this.directionY =  1.25; // 1.25
         this.deleteMark = false;
         this.didFinish = false;
         this.image = document.getElementById('survivor-img');
         this.frame = 0;
         this.finishSound = new Audio();
-        this.finishSound.src = './sfx/enemySpawnSound.mp3'
+        this.finishSound.src = './sfx/survivor-finish.mp3'
+        this.dead = new Audio();
+        this.dead.src = './sfx/survivor-dead.mp3'
         this.maxFrame = 19;
         this.timeToNextFrame = 4;
         this.timeToNextFrameCounter = 0;
@@ -22,15 +24,10 @@ export default class Survivor{
 
     update(){
         this.y += this.directionY;
-        //bounce
-        if(this.x - this.radius < 55 || this.x + this.radius > 845) this.directionX = this.directionX * -1;
 
-
-        // else this.frame++;  
         if(this.timeToNextFrameCounter < this.timeToNextFrame){
             this.timeToNextFrameCounter++;
         } 
-
         if(this.timeToNextFrameCounter == this.timeToNextFrame){
             this.frame++;
             this.timeToNextFrameCounter = 0;
@@ -43,6 +40,5 @@ export default class Survivor{
     }
     init(){
         this.directionY =  0.75;
-        this.directionX =  0;
     }
 }
