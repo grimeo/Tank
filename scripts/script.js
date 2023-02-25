@@ -159,8 +159,8 @@ function animate(){
     // enemies.push(new Enemy());
     if(spawnCounter > spawnTime){
         enemies.push(new Enemy());
-        if(score > 20)enemies[enemies.length -1].levelThree();
-        else if(score > 10)enemies[enemies.length -1].levelTwo();
+        if(score > 30)enemies[enemies.length -1].levelThree();
+        else if(score > 15)enemies[enemies.length -1].levelTwo();
         spawnCounter = 0;
     } else {
         spawnCounter += 1000/fps;
