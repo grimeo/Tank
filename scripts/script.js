@@ -168,7 +168,13 @@ function animate(){
 
     if(survivorSpawnTimeCounter > survivorSpawnTime){
         let spawnArea = 0;
-        let lastEnemyX = enemies[enemies.length -1].x - 25;
+        let lastEnemyX = 0;
+        if(enemies.length >= 1){
+            lastEnemyX = enemies[enemies.length -1].x - 25;
+        } 
+        else {
+            lastEnemyX = Math.random() * (810- 25 -70) + 25 + 60
+        }
         let enemyRightx = 775 - lastEnemyX + 50;
         let enemyLeftx = lastEnemyX;
         // let tentativeSpawnArea = Math.random() * (810-this.radius -70) + this.radius + 60
