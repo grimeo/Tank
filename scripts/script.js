@@ -195,11 +195,12 @@ function animate(){
         backToMenu = false;
     }
     else if(tank.life == 0){
-        cancelAnimationFrame(animate);
+        gameSound.pause();
+        gameOverSound.play();
         resetStats();
         isanimating = false;
         switchSuppportButtonScreen(3);
-        gameOverSound.play();
+        cancelAnimationFrame(animate);
     } else {
         setTimeout(()=>{
             requestAnimationFrame(animate);
