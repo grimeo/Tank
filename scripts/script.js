@@ -3,6 +3,7 @@ import Enemy from "./enemy.js"
 import Bullet from "../scripts/bullet.js"
 import Explosion from "./explosion.js"
 import Blood from "./blood.js"
+import Survivor from "./survivor.js"
 import InputHandler from "../scripts/inputHandler.js"
 
 const canvas = document.getElementById('gamecanvas')
@@ -34,6 +35,8 @@ let tank = new Tank(900, 700);
 
 let spawnTime = 1000; // 2k default
 let spawnCounter = 0
+let survivorSpawnTime = 8000;
+let survivorSpawnTimeCounter = 0;
 let updatedTankLife = tank.life
 
 let score = 0;
@@ -47,6 +50,7 @@ let bullets = []
 let enemies = []
 let explosions = []
 let blood = []
+let survivors = []
 
 
 function isCollide(c1, c2){
@@ -81,6 +85,7 @@ function resetStats(){
     bullets = [];
     explosions = [];
     blood = [];
+    survivors = [];
     tank.init();
     score = 0;
 }
@@ -120,8 +125,8 @@ function animate(){
     // ctx.fillRect(0, 535, 900, 5); // finish line
 
     isanimating = true;
-    [...bullets, ...enemies, ...blood, ...explosions].forEach(object => object.update());
-    [...bullets, ...enemies, ...blood, ...explosions].forEach(object => object.draw(ctx));
+    [...blood, ...bullets, ...survivors, ...enemies, ...explosions].forEach(object => object.update());
+    [...blood, ...bullets, ...survivors, ...enemies, ...explosions].forEach(object => object.draw(ctx));
     
     tank.draw(ctx);
     tank.update(input);
@@ -151,6 +156,24 @@ function animate(){
         spawnCounter = 0;
     } else {
         spawnCounter += 1000/fps;
+    }
+
+    if(survivorSpawnTimeCounter > survivorSpawnTime){
+        let spawnArea = 0;
+        let lastEnemyX = enemies[enemies.length -1].x - 25;
+        let enemyRightx = 775 - lastEnemyX + 50;
+        let enemyLeftx = lastEnemyX;
+        // let tentativeSpawnArea = Math.random() * (810-this.radius -70) + this.radius + 60
+        if(enemyLeftx > enemyRightx){
+            spawnArea = enemyLeftx * 0.5 + 60;
+            survivors.push(new Survivor(spawnArea));
+        } else {
+            spawnArea = enemyRightx * 0.5 + 60;
+            survivors.push(new Survivor(lastEnemyX + spawnArea));
+        }
+        survivorSpawnTimeCounter = 0;
+    } else {
+        survivorSpawnTimeCounter += 1000/fps;
     }
 
     [...enemies].forEach(object => {
