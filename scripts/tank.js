@@ -3,8 +3,8 @@ export default class Tank{
     constructor(gamewidth, gameheight){
         this.gamewidth = gamewidth;
         this.gameheight = gameheight;
-        this.spriteWidth = 446;
-        this.spriteHeight = 312;
+        this.spriteWidth = 448;
+        this.spriteHeight = 314;
         this.width = 190;
         this.height = 133;
         this.x = 900/2 - this.width/2;
@@ -22,7 +22,9 @@ export default class Tank{
         this.reloadTime = 110;
         this.life = 4;
         this.image = document.getElementById('tank-img');
-        this.frame = 1;
+        this.frame = 0;
+        this.timeToNextFrame = 1;
+        this.timeToNextFrameCounter = 0;
 
         
     }
@@ -31,8 +33,10 @@ export default class Tank{
         this.x += this.speedX;
         if(input.keys.indexOf('ArrowRight') > -1){
             this.speedX = 10;
+            this.roll();
         } else if(input.keys.indexOf('ArrowLeft') > -1){
             this.speedX = -10;
+            this.roll();
         } else {
             this.speedX = 0;
         }
@@ -45,7 +49,7 @@ export default class Tank{
     draw(ctx){
         // ctx.fillStyle = this.color;
         // ctx.strokeRect(this.x, this.y, this.width, this.height);
-        ctx.drawImage(this.image, 0, 0, this.spriteWidth, this.spriteHeight, this.x, this.y, this.width, this.height);
+        ctx.drawImage(this.image, this.frame * this.spriteWidth, 0, this.spriteWidth, this.spriteHeight, this.x, this.y, this.width, this.height);
     }
     
     init(){
@@ -61,5 +65,13 @@ export default class Tank{
         this.life = 4;
         this.frame = 1;
     }
-    
+    roll(){
+        if(this.timeToNextFrameCounter > this.timeToNextFrame){
+            this.frame++;
+            this.timeToNextFrameCounter=0;
+        }else{
+            this.timeToNextFrameCounter++;
+        }
+        if(this.frame > 1) this.frame = 0;
+    }
 }
