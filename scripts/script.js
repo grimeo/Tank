@@ -206,6 +206,17 @@ function animate(){
             object.deleteMark = true;
             object.finishSound.play();
         }
+        // for(let i = 0; i < enemies.length; i++){
+        //     if(isCollide(object, enemies[i])){
+                
+        //         enemies.push(new Enemy());
+        //         object.deleteMark = true;
+        //         survivorScore += -1;
+        //         enemies[enemies.length -1].x = object.x;
+        //         enemies[enemies.length -1].y = object.y;
+        //     }
+        // }
+        
     });
 
     [...bullets].forEach(object =>{
@@ -217,7 +228,16 @@ function animate(){
                 object.deleteMark = true;
                 score += 1;
             }
-            
+        }
+        for(let i = 0; i < survivors.length; i++){
+            if(isCollide(object, survivors[i])) {
+                survivors[i].dead.play();
+                explosions.push(new Explosion(survivors[i].x, survivors[i].y, survivors[i].width));
+                blood.push(new Blood(survivors[i].x, survivors[i].y, survivors[i].width));
+                object.deleteMark = true;
+                survivors[i].deleteMark = true;
+                survivorScore += -1;
+            }
         }
     });
     
