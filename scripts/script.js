@@ -35,7 +35,7 @@ let tank = new Tank(900, 700);
 
 let spawnTime = 1000; // 2k default
 let spawnCounter = 0
-let survivorSpawnTime = 8000;
+let survivorSpawnTime = 1000;
 let survivorSpawnTimeCounter = 0;
 let updatedTankLife = tank.life
 
@@ -197,6 +197,18 @@ function animate(){
             updatedTankLife = tank.life
             object.deleteMark = true;
             object.finishSound.play();
+        }
+        for(let i = 0; i < survivors.length; i++){
+            if(isCollide(object, survivors[i])){
+                survivors[i].deleteMark = true;
+                survivors = survivors.filter(object => !object.deleteMark);
+
+                enemies.push(new Enemy());
+                survivorScore += -1;
+                enemies[enemies.length -1].x = object.x;
+                enemies[enemies.length -1].y = object.y;
+                enemies[enemies.length -1].dead.play();
+            }
         }
     });
 
