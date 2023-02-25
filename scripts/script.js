@@ -35,7 +35,7 @@ let tank = new Tank(900, 700);
 
 let spawnTime = 1000; // 2k default
 let spawnCounter = 0
-let survivorSpawnTime = 1000;
+let survivorSpawnTime = 8000;
 let survivorSpawnTimeCounter = 0;
 let updatedTankLife = tank.life
 
