@@ -1,5 +1,5 @@
 export default class Explosion {
-    constructor(x,y,size){
+    constructor(x,y){
         this.image = document.getElementById('explosion-img');
         this.spriteWidth = 100;
         this.spriteHeight = 100;
@@ -9,7 +9,7 @@ export default class Explosion {
         // this.sound = new Audio();
         // this.sound.src = '';
         this.frame = 0;
-        this.timeToNextFrame = 6;
+        this.timeToNextFrame = 1;
         this.timeToNextFrameCounter = 0;
         this.deleteMark = false;
         this.sound = new Audio();
@@ -23,6 +23,7 @@ export default class Explosion {
         if(this.timeToNextFrameCounter > this.timeToNextFrame){
             this.frame++;
             if(this.frame > 25)this.deleteMark = true;
+            this.timeToNextFrameCounter = 0;
         }
     }
     draw(ctx){
