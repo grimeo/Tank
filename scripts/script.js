@@ -369,7 +369,8 @@ document.getElementById('restart').addEventListener('click', () =>{
         resetStats();
         animate();
         switchSuppportButtonScreen(1);
-        gameOverSound.pause();
+        gameSound.currentTime = 0;
+        gameOverSound.play();
     } 
     canvas.focus();
 });
