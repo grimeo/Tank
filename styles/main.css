@@ -6,7 +6,8 @@
 }
 
 body {
-    background-color: gray;
+    background: url('https://raw.githubusercontent.com/grimeo/twelve/main/imgs/front-bg.jpg');
+    /* background-color: gray; */
 }
 canvas{
     /* border: 1px solid #666; */
@@ -112,6 +113,10 @@ img{
     #restart img{
         display: block;
     }
+
+#gameover{
+    z-index: 3;
+}
 #go-main-menu-btn{
     cursor: pointer;
     display: block;

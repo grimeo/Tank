@@ -37,7 +37,7 @@ let gameTime = 0;
 
 let spawnTime = 1000; // 2k default
 let spawnCounter = 0
-let survivorSpawnTime = 8000;
+let survivorSpawnTime = 5000;
 let survivorSpawnTimeCounter = 0;
 let upgraded = false;
 
@@ -125,6 +125,7 @@ function drawStats(){
 
     } else {
         for(let i = 0; i < tank.maxBullet - tank.usedBullet; i++){
+            // ctx.drawImage(bulletIcon, 0, 0, 50, 50, 845 + 30.1 * -i, 60 , 50 , 50);
             ctx.drawImage(bulletIcon, 0, 0, 50, 50, 845 + 30.1 * -i, 60 , 50 , 50);
         }
     }
@@ -154,9 +155,6 @@ function animate(){
     ctx.clearRect(0, 0, 900, 700); 
 
     
-tank.upBullet();
-tank.upLife();
-tank.upReloadTime();
 
     // ctx.fillStyle = 'red';
     // ctx.fillRect(0, 535, 900, 5); // finish line
@@ -188,21 +186,24 @@ tank.upReloadTime();
     // enemies.push(new Enemy());
 
     // 1st power ups - level 2 enemy 
-    if(gameTime > 15000 && gameTime < 18000 && upgraded == false){
+    if(gameTime > 13000 && gameTime < 18000 && upgraded == false){
         survivorSpawnTimeCounter = 0;
         spawnCounter = 0;
+    }
+    if(gameTime > 15000 && gameTime < 18000 && upgraded == false){
         document.getElementById('power-ups').style.display = 'block';
     }else if(gameTime > 18000 && gameTime < 33000){
         upgraded = true;
         document.getElementById('power-ups').style.display = 'none';
     }
-
     if(gameTime > 33000 -  1000 / fps * 3) upgraded = false;
 
     // 2nd power ups 3- enemy
-    if(gameTime > 33000 && gameTime < 36000 && upgraded == false){
+    if(gameTime > 31000 && gameTime < 36000 && upgraded == false){
         survivorSpawnTimeCounter = 0;
         spawnCounter = 0;
+    }
+    if(gameTime > 33000 && gameTime < 36000 && upgraded == false){
         document.getElementById('power-ups').style.display = 'block';
     }else if(gameTime > 36000 && gameTime < 51000){
         upgraded = true;
@@ -210,10 +211,14 @@ tank.upReloadTime();
     }
 
     if(gameTime > 51000 -  1000 / fps * 3) upgraded = false;
+
     // 3rd power ups 4 -enemy
-    if(gameTime > 51000 && gameTime < 54000 && upgraded == false){
+
+    if(gameTime > 49000 && gameTime < 54000 && upgraded == false){
         survivorSpawnTimeCounter = 0;
         spawnCounter = 0;
+    }
+    if(gameTime > 51000 && gameTime < 54000 && upgraded == false){
         document.getElementById('power-ups').style.display = 'block';
     }else if(gameTime > 54000){
         document.getElementById('power-ups').style.display = 'none';
@@ -411,7 +416,6 @@ document.getElementById('gs-main-menu-btn').addEventListener('click', () => {
 });
 
 document.getElementById('go-main-menu-btn').addEventListener('click', () => {
-    
     switchSuppportButtonScreen(0);
     backToMenu = true;
     gameOverSound.pause();
