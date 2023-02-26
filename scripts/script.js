@@ -346,7 +346,7 @@ function animate(){
     }
     else if(tank.life == 0){
         gameSound.pause();
-        if(isMusicOn == true)gameOverSound.play();
+        gameOverSound.play();
         document.getElementById('scoreVal').innerHTML = score;
         document.getElementById('survivorVal').innerHTML = survivorScore;
         isanimating = false;
