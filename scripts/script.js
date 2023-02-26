@@ -30,7 +30,7 @@ gameSound.volume = .7;
 gameSound.loop = true;
 
 const gameOverSound = new Audio();
-gameOverSound.src = './sfx/gameOverSound.mp3';
+gameOverSound.src = './sfx/gameoverSound.mp3';
 gameOverSound.volume = 1;
 
 let lobbymusic = document.getElementById('lobby-music');
@@ -346,7 +346,7 @@ function animate(){
     }
     else if(tank.life == 0){
         gameSound.pause();
-        gameOverSound.play();
+        if(isMusicOn == true)gameOverSound.play();
         document.getElementById('scoreVal').innerHTML = score;
         document.getElementById('survivorVal').innerHTML = survivorScore;
         isanimating = false;
