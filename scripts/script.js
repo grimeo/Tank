@@ -23,7 +23,7 @@ const fps = 120;
 
 const gameSound = new Audio();
 gameSound.src = './sfx/gameSound.mp3';
-gameSound.volume = 1;
+gameSound.volume = .7;
 gameSound.loop = true;
 
 const gameOverSound = new Audio();
