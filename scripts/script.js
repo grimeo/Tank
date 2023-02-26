@@ -190,7 +190,7 @@ function animate(){
         survivorSpawnTimeCounter = 0;
         spawnCounter = 0;
     }
-    if(gameTime > 15000 && gameTime < 18000 && upgraded == false){
+    if(gameTime > 15000 && gameTime < 18000 && upgraded == false && enemies.length == 0){
         document.getElementById('power-ups').style.display = 'block';
     }else if(gameTime > 18000 && gameTime < 33000){
         upgraded = true;
@@ -203,7 +203,7 @@ function animate(){
         survivorSpawnTimeCounter = 0;
         spawnCounter = 0;
     }
-    if(gameTime > 33000 && gameTime < 36000 && upgraded == false){
+    if(gameTime > 33000 && gameTime < 36000 && upgraded == false && enemies.length == 0){
         document.getElementById('power-ups').style.display = 'block';
     }else if(gameTime > 36000 && gameTime < 51000){
         upgraded = true;
@@ -218,7 +218,7 @@ function animate(){
         survivorSpawnTimeCounter = 0;
         spawnCounter = 0;
     }
-    if(gameTime > 51000 && gameTime < 54000 && upgraded == false){
+    if(gameTime > 51000 && gameTime < 54000 && upgraded == false && enemies.length == 0){
         document.getElementById('power-ups').style.display = 'block';
     }else if(gameTime > 54000){
         document.getElementById('power-ups').style.display = 'none';
