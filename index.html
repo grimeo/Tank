@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TvZ - Tank Vs. Zombies</title>
+    <title>Route 55</title>
     <link rel="stylesheet" type="text/css" href="styles/main.css">
 </head>
 <body>
@@ -21,18 +21,34 @@
     <!-- <audio src="sfx/shot-fx.ogg" id="shot-sfx"></audio> -->
 
     <div id="main-menu" class="screen">
-        <button id="play-btn">Play</button>
-        <button>sfx</button>
-        <button>music</button>
+        <div id="play-btn">
+            <img class="btns-imgs" src="imgs/play-btn.png" alt="">
+        </div>
+        <div id="main-menu-sfx" class="pause-btns">
+            <img class="btns-imgs" src="imgs/on-state-sfx-btn.png" alt="">
+        </div>
+        <div id="main-menu-music">
+            <img class="btns-imgs" src="imgs/on-music.png" alt="">
+        </div>
     </div>
     <div id="gamescreen" class="screen">
-        <button id="pause">Pause</button>
+        <div id="pause">
+            <img class="btns-imgs" src="imgs/pause-btn.png" alt="">
+        </div>
     </div>
     <div id="gamescreen-menu" class="screen">
-        <button id="continue">Continue</button>
-        <button id="gs-main-menu-btn">Main Menu</button>
-        <button>sfx</button>
-        <button>music</button>
+        <div id="continue" class="pause-btns">
+            <img class="btns-imgs" src="imgs/continue-btn.png" alt="">
+        </div>
+        <div id="gs-main-menu-btn" class="pause-btns">
+            <img class="btns-imgs" src="imgs/home-btn.png" alt="">
+        </div>
+        <div id="sfx" class="pause-btns">
+            <img class="btns-imgs" src="imgs/on-state-sfx-btn.png" alt="">
+        </div>
+        <div id="music">
+            <img class="btns-imgs" src="imgs/on-music.png" alt="">
+        </div>
     </div>
     <div id="gameover" class="screen">
         <p id="score">123</p>
@@ -41,10 +57,12 @@
     </div>
 
     <div id="zombie-level" class="prompt">
-
+        <p id="zombie-prompt"> ZOMBIE LEVEL UP!</p>
     </div>
     <div id="power-ups" class="prompt">
-
+        <div id="power-ups-1" class="power-item"></div>
+        <div id="power-ups-1" class="power-item"></div>
+        <div id="power-ups-1" class="power-item"></div>
     </div>
 
     

@@ -74,4 +74,13 @@ export default class Tank{
         }
         if(this.frame > 1) this.frame = 0;
     }
+    upBullet(){
+        this.maxBullet += 1;
+    }
+    upReloadTime(){
+        this.reloadTime += -30;
+    }
+    upLife(){
+        this.life += 1;
+    }
 }

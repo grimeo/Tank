@@ -11,9 +11,9 @@ body {
 canvas{
     /* border: 1px solid #666; */
     outline: none;
-    width: 900px;
-    height: 700px;
     position: absolute;
+    min-width: 900px;
+    min-height: 700px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -22,9 +22,12 @@ canvas{
 }
 img{
     display: none;
+    width: 100%;
+    height: 100%;
 }
 
 .screen{
+    z-index: 1;
     display: block;
     width: 900px;
     height: 700px;
@@ -35,9 +38,98 @@ img{
     background-color: #3593ff50;
 }
 
-button {
+.btns-imgs{
+    display: block;
+}
+
+#main-menu{
+    background: url('../imgs/gamescreen-menu-bg.png');
+}
+#play-btn{
+    cursor: pointer;
+    display: block;
+    position: absolute; 
+    width: 400px;
+    transform: translate3d(calc(calc(900px - 400px) / 2), calc(calc(650px - 100px) / 2),0);
+    -ms-transform: translate3d(calc(calc(900px - 400px) / 2), calc(calc(650px - 100px) / 2),0);
+}
+#play-btn:hover{
+    opacity: .8;
+}
+#main-menu-sfx, #main-menu-music{
+    cursor: pointer;
+    display: inline-block;
+    width:50px;
+}
+#main-menu-music{
+    transform: translate3d(750px, 600px,0);
+    -ms-transform: translate3d(750px, 600px,0);
+}
+
+#main-menu-sfx{
+    transform: translate3d(800px, 525px,0);
+    -ms-transform: translate3d(800px, 525px,0);
+}
+#pause {
+    cursor: pointer;
+    display: block;
+    font-size: 20px;
+    width: 30px;
+    margin: auto;
+}
+#continue{
+    cursor: pointer;
     display: block;
     font-size: 20px;
     width: 50px;
-    height: 50px;
+    margin: auto;
 }
+
+#gs-main-menu-btn,
+#sfx,
+#music{
+    cursor: pointer;
+    width: 50px;
+    margin: 20px auto;
+}
+/* #gs-main-menu-btn{
+}
+
+#sfx{
+}
+
+#music{
+} */
+
+#zombie-level{
+    z-index: 3;
+    /* display: none; */
+    font-size: 70px;
+}
+
+#zombie-level-p {
+    /* display: none; */
+    font-size: 70px;
+}
+
+#power-ups{
+    position:absolute;
+    width: 550px;
+    height: 230px;
+    z-index: 2;
+    display: none;
+    background: transparent;
+    border: 1px solid gray;
+    border-radius: 20px ;
+    transform: translate3d(calc(calc(100vw - 550px) / 2), calc(calc(100vh - 230px) / 2),0);
+    -ms-transform: translate3d(calc(calc(100vw - 550px) / 2), calc(calc(100vh - 230px) / 2),0);
+}
+    .power-item{
+        display: inline-block;
+        width: 150px;
+        height: 150px;
+        background-color: green;
+        margin-top: 38px;
+        margin-left: 25px;
+        border-radius: 20px;
+    }

@@ -10,9 +10,9 @@ const canvas = document.getElementById('gamecanvas')
 const ctx = canvas.getContext('2d')
 canvas.focus()
 
-ctx.canvas.width = 900
-ctx.canvas.height = 700
-ctx.font = '30px Impact'
+ctx.canvas.width = 900;
+ctx.canvas.height = 700;
+ctx.font = '30px Impact';
 
 let bulletIcon = document.getElementById('bullet-icon');
 let lifeIcon = document.getElementById('life-icon');
@@ -23,15 +23,17 @@ const fps = 120;
 
 const gameSound = new Audio();
 gameSound.src = './sfx/gameSound.mp3';
-gameSound.volume = 0.1;
+gameSound.volume = 1;
 gameSound.loop = true;
 
 const gameOverSound = new Audio();
 gameOverSound.src = './sfx/gameOverSound.mp3';
-gameOverSound.volume = 0.1;
+gameOverSound.volume = 1;
 
 let input = new InputHandler();
 let tank = new Tank(900, 700);
+
+let gameTime = 0;
 
 let spawnTime = 1000; // 2k default
 let spawnCounter = 0
@@ -77,10 +79,6 @@ function switchSuppportButtonScreen(screenToDisplay){
     }
 }
 
-function playGameMusic(){
-    gameSound.play();
-}
-
 function resetStats(){
     enemies = [];
     bullets = [];
@@ -90,15 +88,32 @@ function resetStats(){
     tank.init();
     score = 0;
     survivorScore = 0;
+    gameTime = 0;
 }
 
 function drawStats(){
     if(tank.maxBullet == tank.usedBullet){
+        // ctx.fillStyle = 'white';
+        // ctx.fillText('reloading...' , 750, 100);
+        // let reloadtimeinterval = tank.reloadTime / tank.maxBullet
 
-        for(let i = 0; i < tank.maxBullet; i++){
+        // if(tank.maxBullet == 4 ){
+        //     if(tank.reloadCounter >= reloadtimeinterval*5){
+        //         for(let i = 0; i < tank.maxBullet; i++){
+        //             ctx.drawImage(bulletIcon, 0, 0, 50, 50, 845 + 30.1 * -i, 60 , 50 , 50);
+        //         }
+        //     } else if(tank.reloadCounter >= reloadtimeinterval*3) {
+        //         for(let i = 0; i < tank.maxBullet; i++){
+        //             ctx.drawImage(bulletIcon, 0, 0, 50, 50, 845 + 30.1 * -i, 60 , 50 , 50);
+        //         }
+        //     } else if(tank.reloadCounter >= reloadtimeinterval*1) {
+        //         for(let i = 0; i < tank.maxBullet; i++){
+        //             ctx.drawImage(bulletIcon, 0, 0, 50, 50, 845 + 30.1 * -i, 60 , 50 , 50);
+        //         }
+        //     }
+        // }
+        
 
-            // ctx.drawImage(bulletIcon, 0, 0, 50, 50, 845 + 35 * -i, 60 , 50 , 50);
-        }
     } else {
         for(let i = 0; i < tank.maxBullet - tank.usedBullet; i++){
             ctx.drawImage(bulletIcon, 0, 0, 50, 50, 845 + 30.1 * -i, 60 , 50 , 50);
@@ -157,10 +172,29 @@ function animate(){
         }
     }
     // enemies.push(new Enemy());
+
+    if(gameTime > 10000 && gameTime < 13000){
+        document.getElementById('power-ups').style.display = 'block';
+    }else if(gameTime > 13000 && gameTime < 20000){
+        document.getElementById('power-ups').style.display = 'none';
+    }
+
+    if(gameTime > 20000 && gameTime < 23000){
+        document.getElementById('power-ups').style.display = 'block';
+    }else if(gameTime > 23000 && gameTime < 30000){
+        document.getElementById('power-ups').style.display = 'none';
+    }
+
+    if(gameTime > 30000 && gameTime < 33000){
+        document.getElementById('power-ups').style.display = 'block';
+    }else if(gameTime > 33000){
+        document.getElementById('power-ups').style.display = 'none';
+    }
+
     if(spawnCounter > spawnTime){
         enemies.push(new Enemy());
-        if(score > 30)enemies[enemies.length -1].levelThree();
-        else if(score > 15)enemies[enemies.length -1].levelTwo();
+        if(gameTime > 35000)enemies[enemies.length -1].levelThree();
+        else if(gameTime > 15000)enemies[enemies.length -1].levelTwo();
         spawnCounter = 0;
     } else {
         spawnCounter += 1000/fps;
@@ -202,6 +236,7 @@ function animate(){
             if(isCollide(object, survivors[i])){
                 let survivorXpoint = survivors[i].x;
                 let survivorYpoint = survivors[i].y;
+                let survivorDeadSound = survivors[i].dead;
                 survivors[i].deleteMark = true;
                 survivors = survivors.filter(object => !object.deleteMark);
 
@@ -210,6 +245,7 @@ function animate(){
                 enemies[enemies.length -1].x = survivorXpoint;
                 enemies[enemies.length -1].y = survivorYpoint;
                 object.finishSound.play();
+                survivorDeadSound.play();
             }
         }
     });
@@ -220,16 +256,6 @@ function animate(){
             object.deleteMark = true;
             object.finishSound.play();
         }
-        // for(let i = 0; i < enemies.length; i++){
-        //     if(isCollide(object, enemies[i])){
-                
-        //         enemies.push(new Enemy());
-        //         object.deleteMark = true;
-        //         survivorScore += -1;
-        //         enemies[enemies.length -1].x = object.x;
-        //         enemies[enemies.length -1].y = object.y;
-        //     }
-        // }
         
     });
 
@@ -265,6 +291,7 @@ function animate(){
 
     
     drawStats();
+    gameTime += 1000 / fps;
 
     if(isPause == true){
         isanimating = false;
@@ -294,7 +321,7 @@ document.getElementById('play-btn').addEventListener('click', () => {
     backToMenu = false;
     resetStats();
     animate();
-    playGameMusic();
+    gameSound.play();
     switchSuppportButtonScreen(1);
     screen[1].style.backgroundColor = 'transparent';
     backToMenu = false;
@@ -306,6 +333,7 @@ document.getElementById('pause').addEventListener('click', () =>{
         isPause = true;
         gameSound.pause();
         switchSuppportButtonScreen(2);
+        screen[2].style.zIndex = '3';
     } 
     else{
         console.log('ispause == true')
@@ -323,6 +351,7 @@ document.getElementById('continue').addEventListener('click', () =>{
         gameSound.play();
         animate();
         switchSuppportButtonScreen(1);
+        screen[2].style.zIndex = '1';
     } else {
         isPause = true;
         gameSound.pause();
