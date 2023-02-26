@@ -177,6 +177,8 @@ function animate(){
     // enemies.push(new Enemy());
 
     if(gameTime > 10000 && gameTime < 13000){
+        survivorSpawnTimeCounter += -3000;
+        spawnCounter =+ -3000;
         document.getElementById('power-ups').style.display = 'block';
     }else if(gameTime > 13000 && gameTime < 20000){
         document.getElementById('power-ups').style.display = 'none';
@@ -370,7 +372,7 @@ document.getElementById('restart').addEventListener('click', () =>{
         animate();
         switchSuppportButtonScreen(1);
         gameSound.currentTime = 0;
-        gameOverSound.play();
+        gameSound.play();
     } 
     canvas.focus();
 });
