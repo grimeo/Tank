@@ -89,6 +89,9 @@ function resetStats(){
     score = 0;
     survivorScore = 0;
     gameTime = 0;
+    document.getElementById('power-ups').style.display = 'none';
+    document.getElementById('scoreVal').innerHTML = '';
+    document.getElementById('survivorVal').innerHTML = '';
 }
 
 function drawStats(){
@@ -304,7 +307,8 @@ function animate(){
     else if(tank.life == 0){
         gameSound.pause();
         gameOverSound.play();
-        resetStats();
+        document.getElementById('scoreVal').innerHTML = score;
+        document.getElementById('survivorVal').innerHTML = survivorScore;
         isanimating = false;
         switchSuppportButtonScreen(3);
         cancelAnimationFrame(animate);
@@ -376,7 +380,7 @@ document.getElementById('gs-main-menu-btn').addEventListener('click', () => {
     gameSound.pause();
 });
 
-document.getElementById('main-menu-btn').addEventListener('click', () => {
+document.getElementById('go-main-menu-btn').addEventListener('click', () => {
     
     switchSuppportButtonScreen(0);
     backToMenu = true;

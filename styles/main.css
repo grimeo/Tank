@@ -35,7 +35,7 @@ img{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #3593ff50;
+    background-color: #36363649;
 }
 
 .btns-imgs{
@@ -100,6 +100,57 @@ img{
 
 #music{
 } */
+
+#restart{
+    cursor: pointer;
+    display: block;
+    width: 50px;
+    height: 50px;
+    transform: translate3d(350px,250px,0);
+    -ms-transform: translate3d(300px,250px,0);
+}
+    #restart img{
+        display: block;
+    }
+#go-main-menu-btn{
+    cursor: pointer;
+    display: block;
+    width: 50px;
+    height: 50px;
+    transform: translate3d(500px,200px,0);
+    -ms-transform: translate3d(500px,250px,0);
+}
+    #go-main-menu-btn img{
+        display: block;
+    }
+
+span {
+    font-size: 40px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: white;
+}
+#score, #survivor-score{
+    /* border: 1px solid red; */
+    position: absolute;
+    width:270px;
+    display: block;
+    font-size: 40px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: white;
+    background-color: #36363649;
+    border-radius: 10px;
+}
+#score{
+    text-align: center;
+    transform: translate3d(calc(calc(900px - 270px) / 2), 100px,0);
+    -ms-transform: translate3d(calc(calc(900px - 270px) / 2), 100px,0);
+}
+
+#survivor-score{
+    text-align: center;
+    transform: translate3d(calc(calc(900px - 270px) / 2), 160px,0);
+    -ms-transform: translate3d(calc(calc(900px - 270px) / 2), 160px,0);
+}
 
 #zombie-level{
     z-index: 3;

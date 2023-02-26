@@ -10,13 +10,13 @@
 <body>
     <canvas id="gamecanvas" tabindex="1"></canvas>
 
+    <img src="imgs/blood.png" id="blood-img" alt="">
     <img src="imgs/tank-sprite.png" id="tank-img" alt="">
     <img src="imgs/enemy-sprite.png" id="enemy-img" alt="">
     <img src="imgs/explosion-sprite.png" id="explosion-img" alt="">
     <img src="imgs/bullet-img.png" id="bullet-img">
     <img src="imgs/bullet-icon.png" id = "bullet-icon">
     <img src="imgs/life-icon.png" id = "life-icon">
-    <img src="imgs/blood.png" id="blood-img" alt="">
     <img src="imgs/survivor.png" alt="" id="survivor-img">
     <!-- <audio src="sfx/shot-fx.ogg" id="shot-sfx"></audio> -->
 
@@ -51,9 +51,10 @@
         </div>
     </div>
     <div id="gameover" class="screen">
-        <p id="score">123</p>
-        <button id="restart">Try again</button>
-        <button id="main-menu-btn">Main Menu</button>
+        <p id="score">Your score: <span id="scoreVal"></span></p>
+        <p id="survivor-score">Survivors: <span id="survivorVal"></span></p>
+        <div id="restart"><img src="imgs/continue-btn.png" alt=""></div>
+        <div id="go-main-menu-btn"><img src="imgs/home-btn.png" alt=""></div>
     </div>
 
     <div id="zombie-level" class="prompt">
