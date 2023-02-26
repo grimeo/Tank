@@ -176,6 +176,7 @@ span {
     -ms-transform: translate3d(calc(calc(100vw - 550px) / 2), calc(calc(100vh - 230px) / 2),0);
 }
     .power-item{
+        cursor: pointer;;
         display: inline-block;
         width: 150px;
         height: 150px;

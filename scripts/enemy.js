@@ -73,4 +73,9 @@ export default class Enemy{
         this.directionX =  Math.random() * 3 - 1.5;
         setInterval(()=>{this.directionX = Math.random() * 4 - 2 }, Math.random() * 1000 + 500)
     }
+    levelFour(){
+        this.directionY =  Math.random() * 0.85 + 0.6;
+        this.directionX =  Math.random() * 3 - 1.5;
+        setInterval(()=>{this.directionX = Math.random() * 4 - 2 }, Math.random() * 1000 + 500)
+    }
 }
