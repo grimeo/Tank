@@ -485,7 +485,7 @@ document.getElementById('sfx').addEventListener('click', () => {
 
 
 
-lobbymusic
+// lobbymusic
 
 switchSuppportButtonScreen(0);
 
