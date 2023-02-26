@@ -65,15 +65,21 @@ audio{
     display: inline-block;
     width:50px;
 }
-#main-menu-music{
-    transform: translate3d(750px, 600px,0);
-    -ms-transform: translate3d(750px, 600px,0);
-}
+    #main-menu-music{
+        transform: translate3d(750px, 600px,0);
+        -ms-transform: translate3d(750px, 600px,0);
+    }
+        #main-menu-music:hover{
+            opacity: 0.7;
+        }
+    #main-menu-sfx{
+        transform: translate3d(800px, 525px,0);
+        -ms-transform: translate3d(800px, 525px,0);
+    }
+        #main-menu-sfx:hover{
+         opacity: .7
+        }
 
-#main-menu-sfx{
-    transform: translate3d(800px, 525px,0);
-    -ms-transform: translate3d(800px, 525px,0);
-}
 #pause {
     cursor: pointer;
     display: block;
@@ -81,6 +87,9 @@ audio{
     width: 30px;
     margin: auto;
 }
+    #pause:hover{
+        opacity: 0.7;
+    }
 #continue{
     cursor: pointer;
     display: block;
@@ -88,6 +97,9 @@ audio{
     width: 50px;
     margin: auto;
 }
+    #continue:hover{
+        opacity: 0.7;
+    }
 
 #gs-main-menu-btn,
 #sfx,
@@ -96,14 +108,17 @@ audio{
     width: 50px;
     margin: 20px auto;
 }
-/* #gs-main-menu-btn{
+#gs-main-menu-btn:hover{
+    opacity: .7;
 }
 
-#sfx{
+#sfx:hover{
+    opacity: .7;
 }
 
-#music{
-} */
+#music:hover{
+    opacity: .7;
+}
 
 #restart{
     cursor: pointer;
@@ -115,6 +130,9 @@ audio{
 }
     #restart img{
         display: block;
+    }
+    #restart:hover{
+        opacity: .7;
     }
 
 #gameover{
@@ -128,6 +146,9 @@ audio{
     transform: translate3d(500px,200px,0);
     -ms-transform: translate3d(500px,250px,0);
 }
+    #go-main-menu-btn:hover{
+        opacity: .7;
+    }
     #go-main-menu-btn img{
         display: block;
     }
