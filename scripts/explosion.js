@@ -1,5 +1,5 @@
 export default class Explosion {
-    constructor(x,y){
+    constructor(x,y, isSFXon){
         this.image = document.getElementById('explosion-img');
         this.spriteWidth = 100;
         this.spriteHeight = 100;
@@ -14,7 +14,7 @@ export default class Explosion {
         this.deleteMark = false;
         this.sound = new Audio();
         this.sound.src = './sfx/explodesfx.ogg';
-        this.sound.play();
+        if(isSFXon == true) this.sound.play();
 
     }
     update(){

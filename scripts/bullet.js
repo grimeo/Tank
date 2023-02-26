@@ -1,6 +1,6 @@
 export default class Bullet{
     // sourceX, sourceY, Destination
-    constructor(x, y){
+    constructor(x, y, isSFXon){
         this.spriteWidth = 50;
         this.spriteHeight = 50;
         this.x = x;
@@ -16,7 +16,7 @@ export default class Bullet{
         this.image = document.getElementById('bullet-img');
         this.sound = new Audio();
         this.sound.src = './sfx/shotsfx.mp3';
-        this.sound.play();
+        if(isSFXon == true) this.sound.play();
     }
     update(){
         // if(this.didFire == false) {

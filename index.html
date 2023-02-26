@@ -18,17 +18,19 @@
     <img src="imgs/bullet-icon.png" id = "bullet-icon">
     <img src="imgs/life-icon.png" id = "life-icon">
     <img src="imgs/survivor.png" alt="" id="survivor-img">
-    <!-- <audio src="sfx/shot-fx.ogg" id="shot-sfx"></audio> -->
+    <audio id="lobby-music"  autoplay>
+        <source src="sfx/lobby-music.mp3" type="audio/mpeg">
+    </audio>
 
     <div id="main-menu" class="screen">
         <div id="play-btn">
             <img class="btns-imgs" src="imgs/play-btn.png" alt="">
         </div>
         <div id="main-menu-sfx" class="pause-btns">
-            <img class="btns-imgs" src="imgs/on-state-sfx-btn.png" alt="">
+            <img class="btns-imgs" id = "menu-toggle-sfx" src="imgs/on-state-sfx-btn.png" alt="">
         </div>
         <div id="main-menu-music">
-            <img class="btns-imgs" src="imgs/on-music.png" alt="">
+            <img class="btns-imgs" id = "menu-toggle-music" src="imgs/on-music.png" alt="">
         </div>
     </div>
     <div id="gamescreen" class="screen">
@@ -44,10 +46,10 @@
             <img class="btns-imgs" src="imgs/home-btn.png" alt="">
         </div>
         <div id="sfx" class="pause-btns">
-            <img class="btns-imgs" src="imgs/on-state-sfx-btn.png" alt="">
+            <img class="btns-imgs" id="game-sfx-btn"  src="imgs/on-state-sfx-btn.png" alt="">
         </div>
         <div id="music">
-            <img class="btns-imgs" src="imgs/on-music.png" alt="">
+            <img class="btns-imgs" id="game-music-btn" src="imgs/on-music.png" alt="">
         </div>
     </div>
     <div id="gameover" class="screen">

@@ -27,6 +27,9 @@ img{
     height: 100%;
 }
 
+audio{
+    display:none;
+}
 .screen{
     z-index: 1;
     display: block;

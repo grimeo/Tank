@@ -21,6 +21,9 @@ const screen = document.getElementsByClassName('screen');
 
 const fps = 120;
 
+let isMusicOn = true;
+let isSFXon = true;
+
 const gameSound = new Audio();
 gameSound.src = './sfx/gameSound.mp3';
 gameSound.volume = .7;
@@ -29,6 +32,9 @@ gameSound.loop = true;
 const gameOverSound = new Audio();
 gameOverSound.src = './sfx/gameOverSound.mp3';
 gameOverSound.volume = 1;
+
+let lobbymusic = document.getElementById('lobby-music');
+lobbymusic.volume = .5;
 
 let input = new InputHandler();
 let tank = new Tank(900, 700);
@@ -167,7 +173,7 @@ function animate(){
     tank.update(input);
     if(input.keys.indexOf(' ') > -1 ){
         if(tank.shootIntervalCounter == tank.shootTime && tank.usedBullet < tank.maxBullet){
-            bullets.push(new Bullet(tank.x + tank.width /2 , tank.y + 20));
+            bullets.push(new Bullet(tank.x + tank.width /2 , tank.y + 20, isSFXon));
             tank.usedBullet += 1;
             tank.shootIntervalCounter = 0;
         }
@@ -267,7 +273,7 @@ function animate(){
             object.didFinish = true;
             updatedTankLife = tank.life
             object.deleteMark = true;
-            object.finishSound.play();
+            if(isSFXon == true) object.finishSound.play();
         }
         for(let i = 0; i < survivors.length; i++){
             if(isCollide(object, survivors[i])){
@@ -281,8 +287,8 @@ function animate(){
                 survivorScore += -1;
                 enemies[enemies.length -1].x = survivorXpoint;
                 enemies[enemies.length -1].y = survivorYpoint;
-                object.finishSound.play();
-                survivorDeadSound.play();
+                if(isSFXon == true) object.finishSound.play();
+                if(isSFXon == true) survivorDeadSound.play();
             }
         }
     });
@@ -291,7 +297,7 @@ function animate(){
         if(object.y > 530){
             survivorScore += 1;
             object.deleteMark = true;
-            object.finishSound.play();
+            if(isSFXon == true) object.finishSound.play();
         }
         
     });
@@ -299,7 +305,7 @@ function animate(){
     [...bullets].forEach(object =>{
         for(let i = 0; i < enemies.length; i++ ){
             if(isCollide(object, enemies[i])){
-                explosions.push(new Explosion(enemies[i].x, enemies[i].y, enemies[i].width))
+                explosions.push(new Explosion(enemies[i].x, enemies[i].y, enemies[i].width, isSFXon))
                 blood.push(new Blood(enemies[i].x, enemies[i].y, enemies[i].width))
                 enemies[i].deleteMark = true;
                 object.deleteMark = true;
@@ -308,7 +314,7 @@ function animate(){
         }
         for(let i = 0; i < survivors.length; i++){
             if(isCollide(object, survivors[i])) {
-                survivors[i].dead.play();
+                if(isSFXon == true) survivors[i].dead.play();
                 explosions.push(new Explosion(survivors[i].x, survivors[i].y, survivors[i].width));
                 blood.push(new Blood(survivors[i].x, survivors[i].y, survivors[i].width));
                 object.deleteMark = true;
@@ -340,7 +346,7 @@ function animate(){
     }
     else if(tank.life == 0){
         gameSound.pause();
-        gameOverSound.play();
+        if(isMusicOn == true)gameOverSound.play();
         document.getElementById('scoreVal').innerHTML = score;
         document.getElementById('survivorVal').innerHTML = survivorScore;
         isanimating = false;
@@ -359,7 +365,8 @@ document.getElementById('play-btn').addEventListener('click', () => {
     backToMenu = false;
     resetStats();
     animate();
-    gameSound.play();
+    if(isMusicOn == true) gameSound.play();
+    lobbymusic.pause();
     switchSuppportButtonScreen(1);
     screen[1].style.backgroundColor = 'transparent';
     backToMenu = false;
@@ -376,7 +383,7 @@ document.getElementById('pause').addEventListener('click', () =>{
     else{
         console.log('ispause == true')
         isPause = false;
-        gameSound.play();
+        if(isMusicOn == true) gameSound.play();
         animate();
         switchSuppportButtonScreen(1);
     }
@@ -386,7 +393,7 @@ document.getElementById('pause').addEventListener('click', () =>{
 document.getElementById('continue').addEventListener('click', () =>{
     if(isPause == true){
         isPause = false;
-        gameSound.play();
+        if(isMusicOn == true) gameSound.play();
         animate();
         switchSuppportButtonScreen(1);
         screen[2].style.zIndex = '1';
@@ -404,7 +411,7 @@ document.getElementById('restart').addEventListener('click', () =>{
         animate();
         switchSuppportButtonScreen(1);
         gameSound.currentTime = 0;
-        gameSound.play();
+        if(isMusicOn == true) gameSound.play();
     } 
     canvas.focus();
 });
@@ -413,6 +420,7 @@ document.getElementById('gs-main-menu-btn').addEventListener('click', () => {
     backToMenu = true;
     resetStats();
     gameSound.pause();
+    if(isMusicOn == true) lobbymusic.play();
 });
 
 document.getElementById('go-main-menu-btn').addEventListener('click', () => {
@@ -420,11 +428,64 @@ document.getElementById('go-main-menu-btn').addEventListener('click', () => {
     backToMenu = true;
     gameOverSound.pause();
     gameSound.pause();
+    if(isMusicOn == true) lobbymusic.play();
     resetStats();
 });
 
+document.getElementById('main-menu-music').addEventListener('click', () => {
+    if(isMusicOn == true){
+        lobbymusic.pause();
+        isMusicOn = false;
+        document.getElementById('menu-toggle-music').src = './imgs/off-music.png';
+        document.getElementById('game-music-btn').src = './imgs/off-music.png';
+    } else {
+        isMusicOn = true;
+        lobbymusic.play();
+        document.getElementById('menu-toggle-music').src = './imgs/on-music.png';
+        document.getElementById('game-music-btn').src = './imgs/on-music.png';
+    }
+});
+
+document.getElementById('music').addEventListener('click', () => {
+    if(isMusicOn == true){
+        gameSound.pause();
+        isMusicOn = false;
+        document.getElementById('game-music-btn').src = './imgs/off-music.png';
+        document.getElementById('menu-toggle-music').src = './imgs/off-music.png';
+    } else {
+        isMusicOn = true;
+        gameSound.play();
+        document.getElementById('menu-toggle-music').src = './imgs/on-music.png';
+        document.getElementById('game-music-btn').src = './imgs/on-music.png';
+    }
+});
+
+document.getElementById('main-menu-sfx').addEventListener('click', () => {
+    if(isSFXon == true){
+        isSFXon = false;
+        document.getElementById('game-sfx-btn').src = './imgs/off-state-sfx-btn.png';
+        document.getElementById('menu-toggle-sfx').src = './imgs/off-state-sfx-btn.png';
+    } else {
+        isSFXon = true;
+        document.getElementById('menu-toggle-sfx').src = './imgs/on-state-sfx-btn.png';
+        document.getElementById('game-sfx-btn').src = './imgs/on-state-sfx-btn.png';
+    }
+});
+document.getElementById('sfx').addEventListener('click', () => {
+    if(isSFXon == true){
+        isSFXon = false;
+        document.getElementById('game-sfx-btn').src = './imgs/off-state-sfx-btn.png';
+        document.getElementById('menu-toggle-sfx').src = './imgs/off-state-sfx-btn.png';
+    } else {
+        isSFXon = true;
+        document.getElementById('menu-toggle-sfx').src = './imgs/on-state-sfx-btn.png';
+        document.getElementById('game-sfx-btn').src = './imgs/on-state-sfx-btn.png';
+    }
+});
+
+
+
+lobbymusic
 
 switchSuppportButtonScreen(0);
-
-
 
