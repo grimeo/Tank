@@ -43,7 +43,7 @@ let gameTime = 0;
 
 let spawnTime = 1000; // 2k default
 let spawnCounter = 0
-let survivorSpawnTime = 5000;
+let survivorSpawnTime = 8000;
 let survivorSpawnTimeCounter = 0;
 let upgraded = false;
 
@@ -234,7 +234,7 @@ function animate(){
         enemies.push(new Enemy());
         if(gameTime > 54000){
             enemies[enemies.length -1].levelFour();
-            spawnTime = 700;
+            spawnTime = 800;
         }
         else if(gameTime > 36000)enemies[enemies.length -1].levelThree();
         else if(gameTime > 18000)enemies[enemies.length -1].levelTwo();
