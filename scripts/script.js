@@ -305,7 +305,7 @@ function animate(){
     [...bullets].forEach(object =>{
         for(let i = 0; i < enemies.length; i++ ){
             if(isCollide(object, enemies[i])){
-                explosions.push(new Explosion(enemies[i].x, enemies[i].y, enemies[i].width, isSFXon))
+                explosions.push(new Explosion(enemies[i].x, enemies[i].y, isSFXon))
                 blood.push(new Blood(enemies[i].x, enemies[i].y, enemies[i].width))
                 enemies[i].deleteMark = true;
                 object.deleteMark = true;
