@@ -19,7 +19,8 @@ canvas{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: url('../imgs/bg.png')
+    -ms-transform: translate(-50%, -50%);
+    background: url('../imgs/bg.png');
     /* background-color: rgb(221, 213, 136); */
 }
 img{
@@ -126,8 +127,8 @@ audio{
     display: block;
     width: 50px;
     height: 50px;
-    transform: translate3d(350px,250px,0);
-    -ms-transform: translate3d(300px,250px,0);
+    transform: translate3d(350px,350px,0);
+    -ms-transform: translate3d(350px,350px,0);
 }
     #restart img{
         display: block;
@@ -144,8 +145,8 @@ audio{
     display: block;
     width: 50px;
     height: 50px;
-    transform: translate3d(500px,200px,0);
-    -ms-transform: translate3d(500px,250px,0);
+    transform: translate3d(500px,300px,0);
+    -ms-transform: translate3d(500px,300px,0);
 }
     #go-main-menu-btn:hover{
         opacity: .7;
@@ -159,10 +160,10 @@ span {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     color: white;
 }
-#score, #survivor-score{
+#score, #highscore, #survivor-dead, #survivor-alive{
     /* border: 1px solid red; */
     position: absolute;
-    width:270px;
+    width:340px;
     display: block;
     font-size: 40px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
@@ -172,14 +173,19 @@ span {
 }
 #score{
     text-align: center;
-    transform: translate3d(calc(calc(900px - 270px) / 2), 100px,0);
-    -ms-transform: translate3d(calc(calc(900px - 270px) / 2), 100px,0);
+    transform: translate3d(calc(calc(900px - 340px) / 2), 130px,0);
+    -ms-transform: translate3d(calc(calc(900px - 340px) / 2), 100px,0);
 }
 
-#survivor-score{
+#survivor-alive{
     text-align: center;
-    transform: translate3d(calc(calc(900px - 270px) / 2), 160px,0);
-    -ms-transform: translate3d(calc(calc(900px - 270px) / 2), 160px,0);
+    transform: translate3d(calc(calc(900px - 340px) / 2), 200px,0);
+    -ms-transform: translate3d(calc(calc(900px - 340px) / 2), 200px,0);
+}
+#survivor-dead{
+    text-align: center;
+    transform: translate3d(calc(calc(900px - 340px) / 2), 270px,0);
+    -ms-transform: translate3d(calc(calc(900px - 340px) / 2), 270px,0);
 }
 
 #zombie-level{
@@ -211,6 +217,7 @@ span {
         border-radius: 20px;
         margin: auto;
         font-size: 40px;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         /* background-color: red; */
         /* border: 5px solid whitesmoke; */
         text-align: center;

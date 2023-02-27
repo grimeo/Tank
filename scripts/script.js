@@ -58,7 +58,9 @@ let isLifeUpgraded = false;
 let updatedTankLife = tank.life
 
 let score = 0;
-let survivorScore = 0;
+let highscore = 0;
+let survivorAlive = 0;
+let survivorDead = 0;
 
 let isPause = false;
 let backToMenu = false;
@@ -103,11 +105,12 @@ function resetStats(){
     survivors = [];
     tank.init();
     score = 0;
-    survivorScore = 0;
+    survivorAlive = 0;
+    survivorDead = 0;
     gameTime = 0;
     document.getElementById('power-ups').style.display = 'none';
-    document.getElementById('scoreVal').innerHTML = '';
-    document.getElementById('survivorVal').innerHTML = '';
+    document.getElementById('survivorAlive').innerHTML = '';
+    document.getElementById('survivorDead').innerHTML = '';
     upgraded = false;
     spawnCounter =0;
     survivorSpawnTimeCounter=0;
@@ -165,10 +168,10 @@ function drawStats(){
     ctx.fillText('Score: ' + score , 10, 85);
 
     ctx.fillStyle = 'black';
-    ctx.fillText('Survivors: ' + survivorScore , 15, 40);
+    ctx.fillText('Survivors: ' + survivorAlive , 15, 40);
 
     ctx.fillStyle = 'lightgray';
-    ctx.fillText('Survivors: ' + survivorScore , 10, 35);
+    ctx.fillText('Survivors: ' + survivorAlive , 10, 35);
 
     // ctx.fillStyle = 'lightgray';
     // ctx.fillText('L: ' + (updatedTankLife ), 5, 695);
@@ -263,7 +266,6 @@ function animate(){
                     tank.upLife();
                     document.getElementById('power-ups').style.display = 'none';
                     isLifeUpgraded = true;
-                    console.log(isLifeUpgraded)
                     tankUpgrades += 1;
                     levelTime = gameTime + timeToNExtLevel;
                     document.getElementById('power-ups-2').style.opacity = '0.3';
@@ -282,7 +284,6 @@ function animate(){
     }
     
 
-    console.log(tankUpgrades)
     if(spawnCounter > spawnTime){
         enemies.push(new Enemy());
         // if(gameTime > 54000){
@@ -345,7 +346,7 @@ function animate(){
                 survivors = survivors.filter(object => !object.deleteMark);
 
                 enemies.push(new Enemy());
-                survivorScore += -1;
+                survivorDead += 1;
                 enemies[enemies.length -1].x = survivorXpoint;
                 enemies[enemies.length -1].y = survivorYpoint;
                 if(isSFXon == true) object.finishSound.play();
@@ -356,7 +357,7 @@ function animate(){
 
     [...survivors].forEach(object => {
         if(object.y > 530){
-            survivorScore += 1;
+            survivorAlive += 1;
             object.deleteMark = true;
             if(isSFXon == true) object.finishSound.play();
         }
@@ -380,7 +381,7 @@ function animate(){
                 blood.push(new Blood(survivors[i].x, survivors[i].y, survivors[i].width));
                 object.deleteMark = true;
                 survivors[i].deleteMark = true;
-                survivorScore += -1;
+                survivorDead += 1;
             }
         }
     });
@@ -409,7 +410,10 @@ function animate(){
         gameSound.pause();
         if(isMusicOn == true)gameOverSound.play();
         document.getElementById('scoreVal').innerHTML = score;
-        document.getElementById('survivorVal').innerHTML = survivorScore;
+        document.getElementById('survivorAlive').innerHTML = survivorAlive;
+        document.getElementById('survivorDead').innerHTML = survivorDead;
+        if(score > highscore) highscore = score;
+        document.getElementById('highscore').innerHTML = highscore;
         isanimating = false;
         switchSuppportButtonScreen(3);
         cancelAnimationFrame(animate);
@@ -442,7 +446,6 @@ document.getElementById('pause').addEventListener('click', () =>{
         screen[2].style.zIndex = '3';
     } 
     else{
-        console.log('ispause == true')
         isPause = false;
         if(isMusicOn == true) gameSound.play();
         animate();
