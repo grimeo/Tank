@@ -127,8 +127,8 @@ audio{
     display: block;
     width: 50px;
     height: 50px;
-    transform: translate3d(350px,350px,0);
-    -ms-transform: translate3d(350px,350px,0);
+    transform: translate3d(350px,420px,0);
+    -ms-transform: translate3d(350px,420px,0);
 }
     #restart img{
         display: block;
@@ -145,8 +145,8 @@ audio{
     display: block;
     width: 50px;
     height: 50px;
-    transform: translate3d(500px,300px,0);
-    -ms-transform: translate3d(500px,300px,0);
+    transform: translate3d(500px,370px,0);
+    -ms-transform: translate3d(500px,370px,0);
 }
     #go-main-menu-btn:hover{
         opacity: .7;
@@ -160,7 +160,7 @@ span {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     color: white;
 }
-#score, #highscore, #survivor-dead, #survivor-alive{
+#score, #highscore, #survivor-dead, #survivor-alive, #results{
     /* border: 1px solid red; */
     position: absolute;
     width:340px;
@@ -173,21 +173,30 @@ span {
 }
 #score{
     text-align: center;
-    transform: translate3d(calc(calc(900px - 340px) / 2), 130px,0);
-    -ms-transform: translate3d(calc(calc(900px - 340px) / 2), 100px,0);
+    transform: translate3d(calc(calc(900px - 340px) / 2), 200px,0);
+    -ms-transform: translate3d(calc(calc(900px - 340px) / 2), 200px,0);
 }
 
 #survivor-alive{
     text-align: center;
-    transform: translate3d(calc(calc(900px - 340px) / 2), 200px,0);
-    -ms-transform: translate3d(calc(calc(900px - 340px) / 2), 200px,0);
-}
-#survivor-dead{
-    text-align: center;
     transform: translate3d(calc(calc(900px - 340px) / 2), 270px,0);
     -ms-transform: translate3d(calc(calc(900px - 340px) / 2), 270px,0);
 }
-
+#survivor-dead{
+    text-align: center;
+    transform: translate3d(calc(calc(900px - 340px) / 2), 340px,0);
+    -ms-transform: translate3d(calc(calc(900px - 340px) / 2), 340px,0);
+}
+#highscore{
+    text-align: center;
+    transform: translate3d(calc(calc(900px - 340px) / 2), 130px,0);
+    -ms-transform: translate3d(calc(calc(900px - 340px) / 2), 130px,0);
+}
+#results{
+    text-align: center;
+    transform: translate3d(calc(calc(900px - 340px) / 2), 60px,0);
+    -ms-transform: translate3d(calc(calc(900px - 340px) / 2), 60px,0);
+}
 #zombie-level{
     z-index: 3;
     /* display: none; */

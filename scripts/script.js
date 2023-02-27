@@ -413,7 +413,7 @@ function animate(){
         document.getElementById('survivorAlive').innerHTML = survivorAlive;
         document.getElementById('survivorDead').innerHTML = survivorDead;
         if(score > highscore) highscore = score;
-        document.getElementById('highscore').innerHTML = highscore;
+        document.getElementById('highscoreVal').innerHTML = highscore;
         isanimating = false;
         switchSuppportButtonScreen(3);
         cancelAnimationFrame(animate);
