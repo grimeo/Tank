@@ -213,7 +213,7 @@ span {
     width: 550px;
     height: 230px;
     z-index: 2;
-    display: block;
+    display: none;
     background: transparent;
     /* background-color: #36363649; */
     /* border: 1px solid gray; */
