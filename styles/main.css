@@ -213,7 +213,7 @@ span {
     width: 550px;
     height: 230px;
     z-index: 2;
-    display: none;
+    display: block;
     background: transparent;
     /* background-color: #36363649; */
     /* border: 1px solid gray; */
@@ -261,3 +261,10 @@ span {
             /* #power-ups-3{
                 opacity: .5;
             } */
+            .powerCode{
+                position: absolute;
+                font-size: 30px;
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; 
+                transform: translate3d(10px,-60px,0);
+                -ms-transform: translate3d(calc(calc(100vw - 550px) / 2), calc(calc(100vh - 250px) / 2),0);
+            }
