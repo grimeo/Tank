@@ -65,13 +65,13 @@ export default class Enemy{
         this.directionX =  0;
     }
     levelTwo(){
-        this.directionY =  Math.random() * 0.5 + 0.5;
-        this.directionX =  Math.random() * 3 - 1.5;
+        this.directionY =  Math.random() * 0.6 + 0.5;
+        // this.directionX =  Math.random() * 3 - 1.5;
     }
     levelThree(){
         this.directionY =  Math.random() * 0.5 + 0.5;
         this.directionX =  Math.random() * 3 - 1.5;
-        setInterval(()=>{this.directionX = Math.random() * 4 - 2 }, Math.random() * 1000 + 500)
+        // setInterval(()=>{this.directionX = Math.random() * 4 - 2 }, Math.random() * 1000 + 500)
     }
     levelFour(){
         this.directionY =  Math.random() * 0.85 + 0.6;

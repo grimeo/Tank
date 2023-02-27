@@ -3,6 +3,7 @@
     padding: 0;
     margin: 0;
     font-size: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 body {
@@ -199,18 +200,48 @@ span {
     z-index: 2;
     display: none;
     background: transparent;
-    border: 1px solid gray;
+    /* background-color: #36363649; */
+    /* border: 1px solid gray; */
     border-radius: 20px ;
-    transform: translate3d(calc(calc(100vw - 550px) / 2), calc(calc(100vh - 230px) / 2),0);
-    -ms-transform: translate3d(calc(calc(100vw - 550px) / 2), calc(calc(100vh - 230px) / 2),0);
+    transform: translate3d(calc(calc(100vw - 550px) / 2), calc(calc(100vh - 250px) / 2),0);
+    -ms-transform: translate3d(calc(calc(100vw - 550px) / 2), calc(calc(100vh - 250px) / 2),0);
 }
+    #choose{
+        width: 300px;
+        border-radius: 20px;
+        margin: auto;
+        font-size: 40px;
+        /* background-color: red; */
+        /* border: 5px solid whitesmoke; */
+        text-align: center;
+        transform: translate3d(0,20px,0);
+    }
     .power-item{
-        cursor: pointer;;
+        /* cursor: pointer;; */
         display: inline-block;
         width: 150px;
         height: 150px;
-        background-color: green;
+        background-color: #fcfcfc65;
+        /* border: 5px solid white; */
         margin-top: 38px;
         margin-left: 25px;
         border-radius: 20px;
+        opacity: .8;
     }
+        .powerUps-imgs{
+            display: block;
+        }
+        .powerLabel{
+            font-size: 20px;
+            text-align: center;
+            
+        }
+        .powerLabelKey{
+            text-align: center;
+            /* background-color: #36363649; */
+            font-size: 20px;
+            font-weight: bolder;
+        }
+            /* #power-ups-3{
+                opacity: .5;
+            } */

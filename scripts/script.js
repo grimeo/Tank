@@ -47,6 +47,14 @@ let survivorSpawnTime = 8000;
 let survivorSpawnTimeCounter = 0;
 let upgraded = false;
 
+let powerUpsOnAir = false;
+let timeToNExtLevel = 15000;
+let levelTime = 15000;
+let tankUpgrades = 0;
+let isBulletUpgraded = false;
+let isReloadUpgraded = false;
+let isLifeUpgraded = false;
+
 let updatedTankLife = tank.life
 
 let score = 0;
@@ -104,6 +112,15 @@ function resetStats(){
     spawnCounter =0;
     survivorSpawnTimeCounter=0;
     spawnTime = 1000;
+    timeToNExtLevel = 15000;
+    levelTime = 15000;
+    tankUpgrades = 0;
+    isBulletUpgraded = false;
+    isReloadUpgraded = false;
+    isLifeUpgraded = false;
+    document.getElementById('power-ups-1').style.opacity = '0.8';
+    document.getElementById('power-ups-2').style.opacity = '0.8';
+    document.getElementById('power-ups-3').style.opacity = '0.8';
 }
 
 function drawStats(){
@@ -191,53 +208,97 @@ function animate(){
     }
     // enemies.push(new Enemy());
 
-    // 1st power ups - level 2 enemy 
-    if(gameTime > 13000 && gameTime < 18000 && upgraded == false){
-        survivorSpawnTimeCounter = 0;
-        spawnCounter = 0;
-    }
-    if(gameTime > 15000 && gameTime < 18000 && upgraded == false && enemies.length == 0){
-        document.getElementById('power-ups').style.display = 'block';
-    }else if(gameTime > 18000 && gameTime < 33000){
-        upgraded = true;
-        document.getElementById('power-ups').style.display = 'none';
-    }
-    if(gameTime > 33000 -  1000 / fps * 3) upgraded = false;
+    // // 1st power ups - level 2 enemy 
+    // if(gameTime > 13000 && gameTime < 18000 && upgraded == false){
+    //     survivorSpawnTimeCounter = 0;
+    //     spawnCounter = 0;
+    // }
+    // if(gameTime > 15000 && gameTime < 18000 && upgraded == false && enemies.length == 0){
+    //     document.getElementById('power-ups').style.display = 'block';
+    // }else if(gameTime > 18000 && gameTime < 33000){
+    //     upgraded = true;
+    //     document.getElementById('power-ups').style.display = 'none';
+    // }
+    // if(gameTime > 33000 -  1000 / fps * 3) upgraded = false;
 
-    // 2nd power ups 3- enemy
-    if(gameTime > 31000 && gameTime < 36000 && upgraded == false){
-        survivorSpawnTimeCounter = 0;
-        spawnCounter = 0;
-    }
-    if(gameTime > 33000 && gameTime < 36000 && upgraded == false && enemies.length == 0){
-        document.getElementById('power-ups').style.display = 'block';
-    }else if(gameTime > 36000 && gameTime < 51000){
-        upgraded = true;
-        document.getElementById('power-ups').style.display = 'none';
-    }
+    // // 2nd power ups 3- enemy
+    // if(gameTime > 31000 && gameTime < 36000 && upgraded == false){
+    //     survivorSpawnTimeCounter = 0;
+    //     spawnCounter = 0;
+    // }
+    // if(gameTime > 33000 && gameTime < 36000 && upgraded == false && enemies.length == 0){
+    //     document.getElementById('power-ups').style.display = 'block';
+    // }else if(gameTime > 36000 && gameTime < 51000){
+    //     upgraded = true;
+    //     document.getElementById('power-ups').style.display = 'none';
+    // }
 
-    if(gameTime > 51000 -  1000 / fps * 3) upgraded = false;
+    // if(gameTime > 51000 -  1000 / fps * 3) upgraded = false;
 
-    // 3rd power ups 4 -enemy
+    // // 3rd power ups 4 -enemy
 
-    if(gameTime > 49000 && gameTime < 54000 && upgraded == false){
-        survivorSpawnTimeCounter = 0;
-        spawnCounter = 0;
+    // if(gameTime > 49000 && gameTime < 54000 && upgraded == false){
+    //     survivorSpawnTimeCounter = 0;
+    //     spawnCounter = 0;
+    // }
+    // if(gameTime > 51000 && gameTime < 54000 && upgraded == false && enemies.length == 0){
+    //     document.getElementById('power-ups').style.display = 'block';
+    // }else if(gameTime > 54000){
+    //     document.getElementById('power-ups').style.display = 'none';
+    // }
+
+    if(tankUpgrades < 3){
+        if(gameTime > levelTime){
+            if(enemies.length == 0){
+                document.getElementById('power-ups').style.display = 'block';
+                powerUpsOnAir = true;
+                if((input.keys.indexOf('z') > -1 || input.keys.indexOf('Z') > -1) && isBulletUpgraded == false){
+                    tank.upBullet()
+                    document.getElementById('power-ups').style.display = 'none';
+                    isBulletUpgraded = true;
+                    tankUpgrades += 1;
+                    levelTime = gameTime + timeToNExtLevel;
+                    document.getElementById('power-ups-1').style.opacity = '0.3';
+                }else if((input.keys.indexOf('x') > -1 || input.keys.indexOf('X') > -1 ) && isLifeUpgraded == false){
+                    tank.upLife();
+                    document.getElementById('power-ups').style.display = 'none';
+                    isLifeUpgraded = true;
+                    console.log(isLifeUpgraded)
+                    tankUpgrades += 1;
+                    levelTime = gameTime + timeToNExtLevel;
+                    document.getElementById('power-ups-2').style.opacity = '0.3';
+                }else if((input.keys.indexOf('c') > -1 || input.keys.indexOf('C') > -1) && isReloadUpgraded == false){
+                    tank.upReloadTime();
+                    document.getElementById('power-ups').style.display = 'none';
+                    isReloadUpgraded = true;
+                    tankUpgrades += 1;
+                    levelTime = gameTime + timeToNExtLevel;
+                    document.getElementById('power-ups-3').style.opacity = '0.3';
+                }
+            }
+            spawnCounter = 0;
+            survivorSpawnTimeCounter = 0;
+        }
     }
-    if(gameTime > 51000 && gameTime < 54000 && upgraded == false && enemies.length == 0){
-        document.getElementById('power-ups').style.display = 'block';
-    }else if(gameTime > 54000){
-        document.getElementById('power-ups').style.display = 'none';
-    }
+    
 
+    console.log(tankUpgrades)
     if(spawnCounter > spawnTime){
         enemies.push(new Enemy());
-        if(gameTime > 54000){
+        // if(gameTime > 54000){
+        //     enemies[enemies.length -1].levelFour();
+        //     spawnTime = 800;
+        // }
+        // else if(gameTime > 36000)enemies[enemies.length -1].levelThree();
+        // else if(gameTime > 18000)enemies[enemies.length -1].levelTwo();
+
+        if(tankUpgrades == 1)enemies[enemies.length -1].levelTwo();
+        else if(tankUpgrades == 2)enemies[enemies.length -1].levelThree();
+        else if(tankUpgrades == 3){
             enemies[enemies.length -1].levelFour();
             spawnTime = 800;
         }
-        else if(gameTime > 36000)enemies[enemies.length -1].levelThree();
-        else if(gameTime > 18000)enemies[enemies.length -1].levelTwo();
+
         spawnCounter = 0;
     } else {
         spawnCounter += 1000/fps;
@@ -486,6 +547,12 @@ document.getElementById('sfx').addEventListener('click', () => {
 
 
 // lobbymusic
+setInterval(()=>{
+    document.getElementById('choose').style.color = '#' + Math.floor(Math.random() * 16777215).toString(16);
+    // document.getElementById('choose').style.border = '5px solid #' + Math.floor(Math.random() * 16777215).toString(16);
+}, 200);
+
+
 
 switchSuppportButtonScreen(0);
 
