@@ -130,6 +130,7 @@ audio{
                 display: block;
                 position: absolute;
                 transform: translate3d(640px, 560px, 0);
+                -ms-transform: translate3d(640px, 560px, 0);
             }
             .next-btn :hover{
                 opacity: 0.85;
@@ -145,6 +146,7 @@ audio{
                 display: block;
                 position: absolute;
                 transform: translate3d(120px, 560px, 0);
+                -ms-transform: translate3d(120px, 560px, 0);
             }
             .tut-prev-btn :hover{
                 opacity: 0.85;
@@ -155,6 +157,7 @@ audio{
                 display: block;
                 position: absolute;
                 transform: translate3d(640px, 560px, 0);
+                -ms-transform: translate3d(640px, 560px, 0);
             }
             .next-btn :hover{
                 opacity: 0.85;
@@ -169,6 +172,7 @@ audio{
             display: block;
             position: absolute;
             transform: translate3d(120px, 560px, 0);
+            -ms-transform: translate3d(120px, 560px, 0);
         }
         .tut-prev-btn-2 :hover{
             opacity: 0.85;
@@ -179,6 +183,7 @@ audio{
             display: block;
             position: absolute;
             transform: translate3d(640px, 560px, 0);
+            -ms-transform: translate3d(640px, 560px, 0);
         }
         #lesgo-btn :hover{
             opacity: 0.85;
