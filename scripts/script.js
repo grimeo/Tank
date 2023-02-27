@@ -547,8 +547,82 @@ document.getElementById('sfx').addEventListener('click', () => {
     }
 });
 
+document.getElementById('instruction-btn').addEventListener('click', ()=>{
+    document.getElementById('tutorial-screens').style.display = 'block';
+    document.getElementById('tut1').style.display = 'block';
+    document.getElementById('tut2').style.display = 'none';
+    document.getElementById('tut3').style.display = 'none';
+});
 
+document.getElementById('tut-home-btn').addEventListener('click', ()=>{
+    document.getElementById('tutorial-screens').style.display = 'none';
+    document.getElementById('tut1').style.display = 'none';
+    document.getElementById('tut2').style.display = 'none';
+    document.getElementById('tut3').style.display = 'none';
+    switchSuppportButtonScreen(0);
+    backToMenu = true;
+    gameOverSound.pause();
+    gameSound.pause();
+    if(isMusicOn == true) lobbymusic.play();
+    resetStats();
+});
 
+document.getElementById('next-btn-1').addEventListener('click',()=>{
+    document.getElementById('tutorial-screens').style.display = 'block';
+    document.getElementById('tut1').style.display = 'none';
+    document.getElementById('tut2').style.display = 'block';
+    document.getElementById('tut3').style.display = 'none';
+});
+// == 
+document.getElementById('tut-prev-btn-1').addEventListener('click',()=>{
+    document.getElementById('tutorial-screens').style.display = 'block';
+    document.getElementById('tut1').style.display = 'block';
+    document.getElementById('tut2').style.display = 'none';
+    document.getElementById('tut3').style.display = 'none';
+});
+
+document.getElementById('next-btn-2').addEventListener('click',()=>{
+    document.getElementById('tutorial-screens').style.display = 'block';
+    document.getElementById('tut1').style.display = 'none';
+    document.getElementById('tut2').style.display = 'none';
+    document.getElementById('tut3').style.display = 'block';
+});
+//==
+document.getElementById('tut-prev-btn-2').addEventListener('click',()=>{
+    document.getElementById('tutorial-screens').style.display = 'block';
+    document.getElementById('tut1').style.display = 'none';
+    document.getElementById('tut2').style.display = 'block';
+    document.getElementById('tut3').style.display = 'none';
+});
+
+document.getElementById('lesgo-btn').addEventListener('click',()=>{
+    document.getElementById('tutorial-screens').style.display = 'none';
+    document.getElementById('tut1').style.display = 'none';
+    document.getElementById('tut2').style.display = 'none';
+    document.getElementById('tut3').style.display = 'none';
+
+    isPause = false;
+    backToMenu = false;
+    resetStats();
+    animate();
+    if(isMusicOn == true) gameSound.play();
+    lobbymusic.pause();
+    switchSuppportButtonScreen(1);
+    screen[1].style.backgroundColor = 'transparent';
+    backToMenu = false;
+});
+
+// document.getElementById('').addEventListener(()=>{
+    
+// });
+
+// document.getElementById('').addEventListener(()=>{
+    
+// });
+
+// document.getElementById('').addEventListener(()=>{
+    
+// });
 // lobbymusic
 setInterval(()=>{
     document.getElementById('choose').style.color = '#' + Math.floor(Math.random() * 16777215).toString(16);

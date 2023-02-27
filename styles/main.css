@@ -41,6 +41,7 @@ audio{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
     background-color: #36363649;
 }
 
@@ -51,17 +52,29 @@ audio{
 #main-menu{
     background: url('../imgs/gamescreen-menu-bg.png');
 }
-#play-btn{
-    cursor: pointer;
-    display: block;
-    position: absolute; 
-    width: 400px;
-    transform: translate3d(calc(calc(900px - 400px) / 2), calc(calc(650px - 100px) / 2),0);
-    -ms-transform: translate3d(calc(calc(900px - 400px) / 2), calc(calc(650px - 100px) / 2),0);
-}
-#play-btn:hover{
-    opacity: .8;
-}
+    #play-btn{
+        cursor: pointer;
+        display: block;
+        position: absolute; 
+        width: 400px;
+        transform: translate3d(calc(calc(900px - 400px) / 2), calc(calc(650px - 100px) / 2),0);
+        -ms-transform: translate3d(calc(calc(900px - 400px) / 2), calc(calc(650px - 100px) / 2),0);
+    }
+        #play-btn:hover{
+            opacity: .8;
+        }
+        #instruction-btn {
+            cursor: pointer;
+            display: block;
+            position: absolute; 
+            width: 200px;
+            transform: translate3d(calc(calc(900px - 200px) / 2),400px,0);
+            -ms-transform: translate3d(calc(calc(900px - 200px) / 2),400px,0);
+        }
+        #instruction-btn:hover{
+            opacity: .8;
+        }
+
 #main-menu-sfx, #main-menu-music{
     cursor: pointer;
     display: inline-block;
@@ -80,6 +93,95 @@ audio{
     }
         #main-menu-sfx:hover{
          opacity: .7
+        }
+
+#tutorial-screens{
+    z-index: 2;
+    display: none;
+    width: 900px;
+    height: 700px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #36363649;
+}   
+    .tut-imgs{
+        display:block;
+    }
+        #tut1{
+            background: url('../imgs/tutorial1.png');
+            height: 700px;
+        }
+            .tut-home-btn{
+                cursor: pointer;
+                width:70px;
+                display: block;
+                position: absolute;
+                transform: translate3d(120px, 560px, 0);
+            }
+            .tut-home-btn :hover{
+                opacity: 0.85;
+            }
+            .next-btn{
+                cursor: pointer;
+                width: 180px;
+                display: block;
+                position: absolute;
+                transform: translate3d(640px, 560px, 0);
+            }
+            .next-btn :hover{
+                opacity: 0.85;
+            }
+
+        #tut2{
+            height: 100%;
+            background: url('../imgs/tutorial2.png');
+        }
+            .tut-prev-btn{
+                cursor: pointer;
+                width:180px;
+                display: block;
+                position: absolute;
+                transform: translate3d(120px, 560px, 0);
+            }
+            .tut-prev-btn :hover{
+                opacity: 0.85;
+            }
+            .next-btn{
+                cursor: pointer;
+                width: 180px;
+                display: block;
+                position: absolute;
+                transform: translate3d(640px, 560px, 0);
+            }
+            .next-btn :hover{
+                opacity: 0.85;
+            }
+        #tut3{
+            height: 100%;
+            background: url('../imgs/controls-tut.png');
+        }
+        .tut-prev-btn-2{
+            cursor: pointer;
+            width:70px;
+            display: block;
+            position: absolute;
+            transform: translate3d(120px, 560px, 0);
+        }
+        .tut-prev-btn-2 :hover{
+            opacity: 0.85;
+        }
+        #lesgo-btn{
+            cursor: pointer;
+            width: 180px;
+            display: block;
+            position: absolute;
+            transform: translate3d(640px, 560px, 0);
+        }
+        #lesgo-btn :hover{
+            opacity: 0.85;
         }
 
 #pause {
@@ -266,5 +368,5 @@ span {
                 font-size: 30px;
                 font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; 
                 transform: translate3d(10px,-60px,0);
-                -ms-transform: translate3d(calc(calc(100vw - 550px) / 2), calc(calc(100vh - 250px) / 2),0);
+                -ms-transform: translate3d(10px, -60px, 0);
             }
