@@ -14,7 +14,8 @@ export default class Tank{
         // this.image = document.getElementById('tank-img');
         // this.frameX = 0; 
         // this.frameY = 0;
-        this.speedX = 1
+        this.speedX = 10;
+        this.speedModifier = 10;
         this.color = 'green'
         this.shootIntervalCounter = 0;
         this.shootTime = 15;
@@ -32,14 +33,19 @@ export default class Tank{
     update(input){
         this.x += this.speedX;
         if(input.keys.indexOf('ArrowRight') > -1){
-            this.speedX = 10;
+            this.speedX = this.speedModifier;
             this.roll();
         } else if(input.keys.indexOf('ArrowLeft') > -1){
-            this.speedX = -10;
+            this.speedX = -this.speedModifier;
             this.roll();
+        } else if(input.keys.indexOf('ArrowUp') > -1){
+            if(this.speedModifier < 10)this.speedModifier += 1;
+        } else if(input.keys.indexOf('ArrowDown') > -1){
+            if(this.speedModifier > 5)this.speedModifier += -1;
         } else {
             this.speedX = 0;
         }
+        console.log(this.speedModifier)
         if(this.x < -40) this.x = -40;
         else if(this.x > 940 - this.width) this.x = 940 - this.width;
         

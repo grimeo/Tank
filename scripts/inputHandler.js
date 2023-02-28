@@ -5,6 +5,8 @@ export default class InputHandler {
             if((    e.key == ' '  ||
                     e.key === 'ArrowLeft' ||
                     e.key === 'ArrowRight' ||
+                    e.key === 'ArrowUp' ||
+                    e.key === 'ArrowDown' ||
                     e.key === 'z' ||
                     e.key === 'Z'||
                     e.key === 'x' ||
@@ -19,6 +21,8 @@ export default class InputHandler {
             if (    e.key == ' '  ||
                     e.key === 'ArrowLeft' ||
                     e.key === 'ArrowRight'||
+                    e.key === 'ArrowUp' ||
+                    e.key === 'ArrowDown' ||
                     e.key === 'z' ||
                     e.key === 'Z'||
                     e.key === 'x' ||
