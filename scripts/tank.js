@@ -82,6 +82,6 @@ export default class Tank{
         if(this.reloadTime > 80) this.reloadTime += -30;
     }
     upLife(){
-        if(this.life == 4) this.life += 1;
+        if(this.life < 4) this.life += 1;
     }
 }
