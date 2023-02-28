@@ -258,24 +258,30 @@ function animate(){
                 if((input.keys.indexOf('z') > -1 || input.keys.indexOf('Z') > -1) && isBulletUpgraded == false){
                     tank.upBullet()
                     document.getElementById('power-ups').style.display = 'none';
+                    document.getElementById('zombie-prompt').style.display = 'block';
                     isBulletUpgraded = true;
                     tankUpgrades += 1;
                     levelTime = gameTime + timeToNExtLevel;
                     document.getElementById('power-ups-1').style.opacity = '0.3';
+                    setTimeout(()=>{document.getElementById('zombie-prompt').style.display = 'none'}, 2500)
                 }else if((input.keys.indexOf('x') > -1 || input.keys.indexOf('X') > -1 ) && isLifeUpgraded == false){
                     tank.upLife();
                     document.getElementById('power-ups').style.display = 'none';
+                    document.getElementById('zombie-prompt').style.display = 'block';
                     isLifeUpgraded = true;
                     tankUpgrades += 1;
                     levelTime = gameTime + timeToNExtLevel;
                     document.getElementById('power-ups-2').style.opacity = '0.3';
+                    setTimeout(()=>{document.getElementById('zombie-prompt').style.display = 'none'}, 2500)
                 }else if((input.keys.indexOf('c') > -1 || input.keys.indexOf('C') > -1) && isReloadUpgraded == false){
                     tank.upReloadTime();
                     document.getElementById('power-ups').style.display = 'none';
+                    document.getElementById('zombie-prompt').style.display = 'block';
                     isReloadUpgraded = true;
                     tankUpgrades += 1;
                     levelTime = gameTime + timeToNExtLevel;
                     document.getElementById('power-ups-3').style.opacity = '0.3';
+                    setTimeout(()=>{document.getElementById('zombie-prompt').style.display = 'none'}, 2500)
                 }
             }
             spawnCounter = 0;
@@ -628,7 +634,10 @@ setInterval(()=>{
     document.getElementById('choose').style.color = '#' + Math.floor(Math.random() * 16777215).toString(16);
     // document.getElementById('choose').style.border = '5px solid #' + Math.floor(Math.random() * 16777215).toString(16);
 }, 200);
-
+setInterval(()=>{
+    document.getElementById('zombie-prompt').style.color = '#' + Math.floor(Math.random() * 16777215).toString(16);
+}, 100);
+// setTimeout(()=>{document.getElementById('zombie-prompt').style.display = 'none'}, 2000)
 
 
 switchSuppportButtonScreen(0);

@@ -375,3 +375,15 @@ span {
                 transform: translate3d(10px,-60px,0);
                 -ms-transform: translate3d(10px, -60px, 0);
             }
+
+#zombie-prompt{
+    z-index: 2;
+    color: white;
+    display: none;
+    width: 400px;
+    text-align: center;
+    position: absolute;
+    font-size: 40px;
+    transform: translate3d(calc(calc(100vw - 400px) / 2), calc(calc(100vh - 250px) / 2),0);
+    -ms-transform: translate3d(calc(calc(100vw - 400px) / 2), calc(calc(100vh - 250px) / 2),0);
+}
