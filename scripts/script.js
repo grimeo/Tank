@@ -481,6 +481,8 @@ document.getElementById('restart').addEventListener('click', () =>{
         animate();
         switchSuppportButtonScreen(1);
         gameSound.currentTime = 0;
+        gameOverSound.pause();
+        gameOverSound.currentTime = 0;
         if(isMusicOn == true) gameSound.play();
     } 
     canvas.focus();
